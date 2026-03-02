@@ -1,0 +1,126 @@
+{% comment %} blocks/breadcrumb.liquid {% endcomment %}
+
+<nav
+  class="breadcrumb-block"
+  aria-label="Breadcrumb"
+  style="
+    --bc-color: {{ block.settings.text_color }};
+    --bc-size: {{ block.settings.font_size }}px;
+    --bc-align: {{ block.settings.alignment }};
+    --bc-padding: {{ block.settings.padding }}px;
+  "
+>
+  <ul>
+    <li><a href="/">{{ 'blocks.breadcrumbs.home' | t | default: 'Home' }}</a></li>
+
+    {%- if template.name == 'collection' -%}
+      <li aria-current="page"><span>{{ collection.title }}</span></li>
+
+    {%- elsif template.name == 'product' -%}
+      {%- if collection -%}
+        <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+      {%- endif -%}
+      <li aria-current="page"><span>{{ product.title }}</span></li>
+
+    {%- elsif template.name == 'article' -%}
+      <li><a href="{{ blog.url }}">{{ blog.title }}</a></li>
+      <li aria-current="page"><span>{{ article.title }}</span></li>
+
+    {%- elsif template.name == 'blog' -%}
+      <li aria-current="page"><span>{{ blog.title }}</span></li>
+
+    {%- elsif template.name == 'page' -%}
+      <li aria-current="page"><span>{{ page.title }}</span></li>
+
+    {%- endif -%}
+  </ul>
+</nav>
+
+<style>
+  .breadcrumb-block {
+    padding: var(--bc-padding) 0;
+    text-align: var(--bc-align);
+  }
+  .breadcrumb-block ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25em;
+    justify-content: var(--bc-align);
+  }
+  .breadcrumb-block li {
+    display: flex;
+    align-items: center;
+    font-size: var(--bc-size);
+    color: var(--bc-color);
+  }
+  .breadcrumb-block li + li::before {
+    content: '›';
+    margin-right: 0.25em;
+    opacity: 0.6;
+  }
+  .breadcrumb-block a {
+    color: var(--bc-color);
+    text-decoration: none;
+    opacity: 0.8;
+  }
+  .breadcrumb-block a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+  .breadcrumb-block span {
+    opacity: 0.6;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Breadcrumb",
+  "settings": [
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "default": 13,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 8,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breadcrumb"
+    }
+  ]
+}
+{% endschema %}

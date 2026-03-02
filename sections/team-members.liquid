@@ -1,0 +1,286 @@
+{% comment %} Team Members Section {% endcomment %}
+
+<section class="team-members-section" style="padding: {{ section.settings.section_padding }}px 0; background: {{ section.settings.background_color }};">
+  <div class="team-members-container">
+
+    {% if section.settings.heading != blank %}
+      <div class="team-members-heading" style="text-align: {{ section.settings.heading_alignment }}; color: {{ section.settings.heading_color }};">
+        {{ section.settings.heading }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="team-members-subheading" style="text-align: {{ section.settings.heading_alignment }}; color: {{ section.settings.heading_color }};">
+        {{ section.settings.subheading }}
+      </p>
+    {% endif %}
+
+    <div class="team-members-grid" style="--columns: {{ section.settings.members_per_row }};">
+      {% for block in section.blocks %}
+        <div class="team-member-card" {{ block.shopify_attributes }}>
+
+          {% if block.settings.photo != blank %}
+            <div class="team-member-photo-wrap" style="--img-ratio: {{ section.settings.image_ratio }}; --img-radius: {% if section.settings.round_photos %}50%{% else %}8px{% endif %};">
+              <img
+                src="{{ block.settings.photo | image_url: width: 400 }}"
+                alt="{{ block.settings.name | escape }}"
+                loading="lazy"
+                width="400"
+                height="400"
+              >
+            </div>
+          {% else %}
+            <div class="team-member-photo-wrap team-member-photo-placeholder" style="--img-ratio: {{ section.settings.image_ratio }}; --img-radius: {% if section.settings.round_photos %}50%{% else %}8px{% endif %};">
+              {{ 'person' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+
+          <div class="team-member-info" style="text-align: {{ section.settings.card_text_alignment }};">
+            {% if block.settings.name != blank %}
+              <h3 class="team-member-name" style="color: {{ section.settings.name_color }};">{{ block.settings.name }}</h3>
+            {% endif %}
+            {% if block.settings.role != blank %}
+              <p class="team-member-role" style="color: {{ section.settings.role_color }};">{{ block.settings.role }}</p>
+            {% endif %}
+            {% if block.settings.bio != blank %}
+              <p class="team-member-bio" style="color: {{ section.settings.bio_color }};">{{ block.settings.bio }}</p>
+            {% endif %}
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .team-members-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .team-members-heading {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .team-members-heading p {
+    margin: 0;
+  }
+  .team-members-subheading {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.75;
+  }
+  .team-members-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns, 3), 1fr);
+    gap: 2rem;
+  }
+  .team-member-photo-wrap {
+    aspect-ratio: var(--img-ratio, 1 / 1);
+    overflow: hidden;
+    border-radius: var(--img-radius, 8px);
+    margin-bottom: 1rem;
+  }
+  .team-member-photo-wrap img,
+  .team-member-photo-wrap svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .team-member-photo-placeholder {
+    background: #f0f0f0;
+  }
+  .team-member-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+  }
+  .team-member-role {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem;
+    opacity: 0.75;
+  }
+  .team-member-bio {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .team-members-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .team-members-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Team Members",
+  "tag": "section",
+  "class": "team-members-section-wrap",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Meet the Team</p>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The people behind the brand."
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "members_per_row",
+      "label": "Team members per row",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Photo shape",
+      "options": [
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "3 / 4", "label": "Portrait" },
+        { "value": "4 / 3", "label": "Landscape" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "round_photos",
+      "label": "Round photos",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "card_text_alignment",
+      "label": "Card text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding (top & bottom)",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Name color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "role_color",
+      "label": "Role color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "bio_color",
+      "label": "Bio color",
+      "default": "#444444"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Jane Smith"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role / Title",
+          "default": "Head of Design"
+        },
+        {
+          "type": "richtext",
+          "id": "bio",
+          "label": "Bio",
+          "default": "<p>A short description about this team member and what they bring to the team.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Team Members",
+      "blocks": [
+        { "type": "member" },
+        { "type": "member" },
+        { "type": "member" },
+        { "type": "member" },
+        { "type": "member" },
+        { "type": "member" }
+      ]
+    }
+  ]
+}
+{% endschema %}
