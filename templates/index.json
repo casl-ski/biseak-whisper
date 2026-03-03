@@ -224,7 +224,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Adoptez l'esprit rebelle du cyclisme moderne.</p>",
+                    "text": "<p>La meilleure façon de découvrir la Gaspésie, c'est sur deux roues. Laissez-nous vous convaincre.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -377,7 +377,7 @@
               "type": "button",
               "settings": {
                 "label": "Partir à l'aventure",
-                "link": "shopify://collections/all",
+                "link": "shopify://pages/location",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
@@ -652,6 +652,7 @@
         "text_pH8qby": {
           "type": "text",
           "name": "t:names.heading",
+          "disabled": true,
           "settings": {
             "text": "<h2>Notre boutique</h2>",
             "width": "fit-content",
@@ -678,10 +679,10 @@
         "text_eFMntb": {
           "type": "text",
           "settings": {
-            "text": "<h2>Au cœur d'une culture subversive, notre boutique se dédie à la passion du cyclisme, offrant des pièces rares et des accessoires qui incarnent l'esprit punk.</h2>",
+            "text": "<p>Mot-valise provenant du français<br/>« Bicycle » et de l’anglais « Sea ».</p>",
             "width": "100%",
             "max_width": "narrow",
-            "alignment": "center",
+            "alignment": "right",
             "type_preset": "h2",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
@@ -699,26 +700,11 @@
             "padding-inline-end": 0
           },
           "blocks": {}
-        },
-        "button_TmU98M": {
-          "type": "button",
-          "settings": {
-            "label": "Acheter maintenant →",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "link",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
         }
       },
       "block_order": [
         "text_pH8qby",
-        "text_eFMntb",
-        "button_TmU98M"
+        "text_eFMntb"
       ],
       "name": "t:names.pull_quote",
       "settings": {
@@ -727,15 +713,16 @@
         "horizontal_alignment": "center",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
+        "horizontal_alignment_flex_direction_column": "flex-end",
+        "vertical_alignment_flex_direction_column": "flex-start",
         "gap": 80,
         "section_width": "page-width",
         "section_height": "medium",
         "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
+        "color_scheme": "scheme-8",
+        "background_media": "image",
         "video_position": "cover",
+        "background_image": "shopify://shop_images/accueil-bloc05.jpg",
         "background_image_position": "cover",
         "border": "none",
         "border_width": 1,
@@ -848,6 +835,7 @@
           ]
         }
       },
+      "disabled": true,
       "custom_css": [],
       "name": "t:names.media_with_text",
       "settings": {
