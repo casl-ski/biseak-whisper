@@ -92,6 +92,18 @@
 
   .header-top-bar {
     border-block-end: var(--border-bottom-width) solid var(--color-border);
+    transition: background-color var(--animation-values-slow), border-color var(--animation-values-slow);
+  }
+
+  /* When the main header is transparent and at top of page, top bar is also transparent */
+  body:has(#header-component[transparent]:not([data-sticky-state='active'])) .header-top-bar {
+    background-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  /* Faster transition when scrolling down (going opaque) */
+  body:has(#header-component[transparent][data-sticky-state='active']) .header-top-bar {
+    transition: background-color var(--animation-values-fast), border-color var(--animation-values-fast);
   }
 
   .header-top-bar__inner {

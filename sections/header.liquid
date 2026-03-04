@@ -292,6 +292,59 @@
   {%- if request.page_type == 'index' -%}
     <h1 class="visually-hidden">{{ shop.name }}</h1>
   {%- endif -%}
+
+  {%- if section.settings.topbar_phone_display != blank -%}
+    <div
+      class="header__row header__row--topbar color-{{ section.settings.topbar_color_scheme }} section section--{{ section.settings.topbar_section_width }}"
+      style="--border-bottom-width: {{ section.settings.topbar_divider_width }}px; padding-block-start: {{ section.settings.topbar_padding_top }}px; padding-block-end: {{ section.settings.topbar_padding_bottom }}px;"
+    >
+      <div class="header-top-bar__inner">
+        <div class="header-top-bar__left">
+          <a href="tel:{{ section.settings.topbar_phone_url }}" class="header-top-bar__phone-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.91 6.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>{{ section.settings.topbar_phone_display }}</span>
+          </a>
+          {%- if section.settings.topbar_contact_url != blank -%}
+            <a href="{{ section.settings.topbar_contact_url }}" class="header-top-bar__contact-link">
+              {{ section.settings.topbar_contact_label }}
+            </a>
+          {%- endif -%}
+        </div>
+        <div class="header-top-bar__right">
+          <form action="{{ routes.search_url }}" method="get" role="search" class="header-top-bar__search-form">
+            <button type="submit" class="header-top-bar__search-btn" aria-label="Rechercher">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </button>
+            <input
+              type="search"
+              name="q"
+              placeholder="{{ section.settings.topbar_search_placeholder }}"
+              class="header-top-bar__search-input"
+              aria-label="{{ section.settings.topbar_search_placeholder }}"
+            >
+          </form>
+          <div class="header-top-bar__social">
+            {%- if section.settings.topbar_facebook_url != blank -%}
+              <a href="{{ section.settings.topbar_facebook_url }}" target="_blank" rel="noopener noreferrer" class="header-top-bar__social-link" aria-label="Facebook">
+                {% render 'icon', icon: 'facebook' %}
+              </a>
+            {%- endif -%}
+            {%- if section.settings.topbar_instagram_url != blank -%}
+              <a href="{{ section.settings.topbar_instagram_url }}" target="_blank" rel="noopener noreferrer" class="header-top-bar__social-link" aria-label="Instagram">
+                {% render 'icon', icon: 'instagram' %}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
   {% for row in rows %}
     {% liquid
       assign scheme = 'color_scheme_' | append: row
@@ -503,8 +556,111 @@
 
   .header__row--top:not(.divider--page-width),
   .header__row--top.divider--page-width .header__columns,
-  .header__row--bottom {
+  .header__row--bottom,
+  .header__row--topbar {
     border-bottom: var(--border-bottom-width) solid var(--color-border);
+  }
+
+  /* Top bar layout */
+  .header-top-bar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .header-top-bar__left,
+  .header-top-bar__right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .header-top-bar__phone-link,
+  .header-top-bar__contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+    font-size: 0.875rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .header-top-bar__contact-link::before {
+    content: '|';
+    opacity: 0.4;
+    margin-inline-end: 0.1rem;
+  }
+
+  .header-top-bar__search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-foreground) 30%, transparent);
+    padding-block-end: 2px;
+  }
+
+  .header-top-bar__search-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--color-foreground);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .header-top-bar__search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--color-foreground);
+    font-size: 0.875rem;
+    font-family: inherit;
+    width: 140px;
+
+    &::placeholder {
+      color: color-mix(in srgb, var(--color-foreground) 50%, transparent);
+    }
+  }
+
+  .header-top-bar__social {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .header-top-bar__social-link {
+    display: flex;
+    align-items: center;
+    color: var(--color-foreground);
+    opacity: 0.8;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .header__row--topbar .header-top-bar__right {
+      display: none;
+    }
+
+    .header__row--topbar .header-top-bar__inner {
+      justify-content: center;
+    }
   }
 
   @media screen and (max-width: 749px) {
@@ -1187,6 +1343,94 @@
       ],
       "default": "default",
       "visible_if": "{{ section.settings.enable_transparent_header_collection }}"
+    },
+    {
+      "type": "header",
+      "content": "Barre supérieure"
+    },
+    {
+      "type": "text",
+      "id": "topbar_phone_display",
+      "label": "Numéro affiché",
+      "info": "Laisser vide pour masquer la barre"
+    },
+    {
+      "type": "text",
+      "id": "topbar_phone_url",
+      "label": "Lien téléphone (chiffres seulement)"
+    },
+    {
+      "type": "text",
+      "id": "topbar_contact_label",
+      "label": "Texte du lien contact",
+      "default": "Contact"
+    },
+    {
+      "type": "url",
+      "id": "topbar_contact_url",
+      "label": "URL de contact"
+    },
+    {
+      "type": "text",
+      "id": "topbar_search_placeholder",
+      "label": "Texte indicatif de recherche",
+      "default": "Rechercher..."
+    },
+    {
+      "type": "url",
+      "id": "topbar_facebook_url",
+      "label": "URL Facebook"
+    },
+    {
+      "type": "url",
+      "id": "topbar_instagram_url",
+      "label": "URL Instagram"
+    },
+    {
+      "type": "color_scheme",
+      "id": "topbar_color_scheme",
+      "label": "Palette de couleurs",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "topbar_section_width",
+      "label": "Largeur",
+      "options": [
+        { "value": "page-width", "label": "Page" },
+        { "value": "full-width", "label": "Pleine largeur" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "range",
+      "id": "topbar_divider_width",
+      "label": "Épaisseur du séparateur",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "topbar_padding_top",
+      "label": "Espacement haut",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "topbar_padding_bottom",
+      "label": "Espacement bas",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 8
     }
   ],
   "presets": []

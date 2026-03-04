@@ -11,24 +11,6 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "header_top_bar": {
-      "type": "header-top-bar",
-      "name": "Barre supérieure",
-      "settings": {
-        "phone_display": "{{ metaobjects.numero_de_tlel[\"418-764-6016\"][\"418_764_6016\"].value }}",
-        "phone_url": "4187646016",
-        "contact_label": "Contact",
-        "contact_url": "/pages/contact",
-        "search_placeholder": "Rechercher...",
-        "facebook_url": "https://www.facebook.com/velobiseak",
-        "instagram_url": "https://www.instagram.com/velobiseak/",
-        "section_width": "page-width",
-        "color_scheme": "scheme-transparent-announcements",
-        "divider_width": 1,
-        "padding-block-start": 8,
-        "padding-block-end": 8
-      }
-    },
     "header_announcements_QTBwtW": {
       "type": "header-announcements",
       "blocks": {
@@ -141,12 +123,23 @@
         "enable_transparent_header_product": false,
         "product_color_scheme": "default",
         "enable_transparent_header_collection": false,
-        "collection_color_scheme": "default"
+        "collection_color_scheme": "default",
+        "topbar_phone_display": "{{ metaobjects.numero_de_tlel[\"418-764-6016\"][\"418_764_6016\"].value }}",
+        "topbar_phone_url": "4187646016",
+        "topbar_contact_label": "Contact",
+        "topbar_contact_url": "/pages/contact",
+        "topbar_search_placeholder": "Rechercher...",
+        "topbar_facebook_url": "https://www.facebook.com/velobiseak",
+        "topbar_instagram_url": "https://www.instagram.com/velobiseak/",
+        "topbar_section_width": "page-width",
+        "topbar_color_scheme": "scheme-transparent-announcements",
+        "topbar_divider_width": 1,
+        "topbar_padding_top": 8,
+        "topbar_padding_bottom": 8
       }
     }
   },
   "order": [
-    "header_top_bar",
     "header_announcements_QTBwtW",
     "divider_yEqKGb",
     "header_section"

@@ -86,23 +86,28 @@ class HeaderComponent extends Component {
    * @param {Boolean} alwaysSticky - Determines if we need to observe when the header is offscreen
    */
   #observeStickyPosition = (alwaysSticky = true) => {
+    if (alwaysSticky) {
+      // For always-sticky mode the -1px IntersectionObserver trick doesn't work when a
+      // top bar is present: the header sticks at `topBarHeight - 1px` which is always
+      // inside the viewport, so the observer never fires "not intersecting".
+      // Instead, derive the sticky state directly from scroll position.
+      const scrollTop = document.scrollingElement?.scrollTop ?? 0;
+      this.dataset.stickyState = scrollTop < 1 ? 'inactive' : 'active';
+      if (this.dataset.themeColor) changeMetaThemeColor(this.dataset.themeColor);
+      return;
+    }
+
     if (this.#intersectionObserver) return;
 
     const config = {
-      threshold: alwaysSticky ? 1 : 0,
+      threshold: 0,
     };
 
     this.#intersectionObserver = new IntersectionObserver(([entry]) => {
       if (!entry) return;
 
       const { isIntersecting } = entry;
-
-      if (alwaysSticky) {
-        this.dataset.stickyState = isIntersecting ? 'inactive' : 'active';
-        if (this.dataset.themeColor) changeMetaThemeColor(this.dataset.themeColor);
-      } else {
-        this.#offscreen = !isIntersecting || this.dataset.stickyState === 'active';
-      }
+      this.#offscreen = !isIntersecting || this.dataset.stickyState === 'active';
     }, config);
 
     this.#intersectionObserver.observe(this);
@@ -156,6 +161,13 @@ class HeaderComponent extends Component {
     }
 
     if (stickyMode === 'always') {
+      // Update transparent → opaque state based on scroll position
+      const newStickyState = scrollTop < 1 ? 'inactive' : 'active';
+      if (this.dataset.stickyState !== newStickyState) {
+        this.dataset.stickyState = newStickyState;
+        if (this.dataset.themeColor) changeMetaThemeColor(this.dataset.themeColor);
+      }
+
       if (isAtTop) {
         this.dataset.scrollDirection = 'none';
       } else if (isScrollingUp) {
