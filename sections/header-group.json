@@ -16,6 +16,7 @@
       "blocks": {
         "announcement_cXDVCA": {
           "type": "_announcement",
+          "disabled": true,
           "settings": {
             "text": "Découvrez nos nouveautés",
             "link": "",
@@ -55,6 +56,25 @@
         "alignment_horizontal": "center",
         "padding-block-start": 16,
         "padding-block-end": 16
+      }
+    },
+    "header_top_bar_Q6atKh": {
+      "type": "header-top-bar",
+      "disabled": true,
+      "name": "Barre supérieure",
+      "settings": {
+        "phone_display": "418 764-6016",
+        "phone_url": "4187646016",
+        "contact_label": "Contact",
+        "contact_url": "",
+        "search_placeholder": "Rechercher...",
+        "facebook_url": "",
+        "instagram_url": "",
+        "section_width": "page-width",
+        "color_scheme": "",
+        "divider_width": 1,
+        "padding-block-start": 8,
+        "padding-block-end": 8
       }
     },
     "header_section": {
@@ -124,15 +144,15 @@
         "product_color_scheme": "default",
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default",
-        "topbar_phone_display": "{{ metaobjects.numero_de_tlel[\"418-764-6016\"][\"418_764_6016\"].value }}",
-        "topbar_phone_url": "4187646016",
+        "topbar_phone_display": "",
+        "topbar_phone_url": "",
         "topbar_contact_label": "Contact",
-        "topbar_contact_url": "/pages/contact",
+        "topbar_contact_url": "",
         "topbar_search_placeholder": "Rechercher...",
-        "topbar_facebook_url": "https://www.facebook.com/velobiseak",
-        "topbar_instagram_url": "https://www.instagram.com/velobiseak/",
+        "topbar_facebook_url": "",
+        "topbar_instagram_url": "",
+        "topbar_color_scheme": "",
         "topbar_section_width": "page-width",
-        "topbar_color_scheme": "scheme-transparent-announcements",
         "topbar_divider_width": 1,
         "topbar_padding_top": 8,
         "topbar_padding_bottom": 8
@@ -142,6 +162,7 @@
   "order": [
     "header_announcements_QTBwtW",
     "divider_yEqKGb",
+    "header_top_bar_Q6atKh",
     "header_section"
   ]
 }
