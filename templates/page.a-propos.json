@@ -241,6 +241,69 @@
         "padding-block-end": 0
       }
     },
+    "team_members_EWFjDz": {
+      "type": "team-members",
+      "blocks": {
+        "member_rcaNzh": {
+          "type": "member",
+          "settings": {
+            "photo": "shopify://shop_images/Biseak-14-scaled-e1742244597539.jpg",
+            "name": "Clément Vallée",
+            "role": "",
+            "bio": "<p>Le grand manitou, Il est à gauche, à droite et partout en même temps. Par contre, jamais il n'as manqué de temps pour aider un client.</p>"
+          }
+        },
+        "member_NThWjk": {
+          "type": "member",
+          "settings": {
+            "photo": "shopify://shop_images/Biseak-3-scaled.jpg",
+            "name": "Loïc Desroches-Larivière",
+            "role": "",
+            "bio": "<p>La légende raconte que cet homme à vu le jour dans un bike shop. Génie de la mécanique et soudeur de formation, on a ici la crème de la crème des mécanos.</p>"
+          }
+        },
+        "member_AARFAq": {
+          "type": "member",
+          "settings": {
+            "photo": "shopify://shop_images/Biseak-159-scaled.jpg",
+            "name": "Antoine Brisson",
+            "role": "",
+            "bio": "<p>Machiniste, patenteux, ingénieux et grand <em>chilleux. </em>Voici un couteau suisse à 10 000 fonctions.</p>"
+          }
+        },
+        "member_JPg6Rp": {
+          "type": "member",
+          "settings": {
+            "photo": "shopify://shop_images/felix.jpg",
+            "name": "Félix Boulay",
+            "role": "",
+            "bio": "<p>C'est lui le préféré de ta grand-mère. Serviable, efficace et courtois, c'est un premier de classe dans tous les domaines. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "member_rcaNzh",
+        "member_NThWjk",
+        "member_AARFAq",
+        "member_JPg6Rp"
+      ],
+      "name": "Team Members",
+      "settings": {
+        "heading": "<h2><strong>Une équipe de passionnés de plein air</strong></h2>",
+        "subheading": "",
+        "heading_alignment": "center",
+        "heading_color": "#111111",
+        "members_per_row": 4,
+        "image_ratio": "1 / 1",
+        "round_photos": true,
+        "card_text_alignment": "center",
+        "section_padding": 20,
+        "background_color": "#ffffff",
+        "name_color": "#111111",
+        "role_color": "#555555",
+        "bio_color": "#444444"
+      }
+    },
     "section_y3WGL7": {
       "type": "section",
       "blocks": {
@@ -251,9 +314,9 @@
             "image": "shopify://shop_images/Biseak-173.jpg",
             "link": "",
             "image_ratio": "landscape",
-            "width": "fit-content",
+            "width": "fill",
             "custom_width": 100,
-            "width_mobile": "fit-content",
+            "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
             "border": "none",
@@ -964,69 +1027,6 @@
         "padding-block-end": 48
       }
     },
-    "team_members_EWFjDz": {
-      "type": "team-members",
-      "blocks": {
-        "member_rcaNzh": {
-          "type": "member",
-          "settings": {
-            "photo": "shopify://shop_images/Biseak-14-scaled-e1742244597539.jpg",
-            "name": "Clément Vallée",
-            "role": "",
-            "bio": "<p>Le grand manitou, Il est à gauche, à droite et partout en même temps. Par contre, jamais il n'as manqué de temps pour aider un client.</p>"
-          }
-        },
-        "member_NThWjk": {
-          "type": "member",
-          "settings": {
-            "photo": "shopify://shop_images/Biseak-3-scaled.jpg",
-            "name": "Loïc Desroches-Larivière",
-            "role": "",
-            "bio": "<p>La légende raconte que cet homme à vu le jour dans un bike shop. Génie de la mécanique et soudeur de formation, on a ici la crème de la crème des mécanos.</p>"
-          }
-        },
-        "member_AARFAq": {
-          "type": "member",
-          "settings": {
-            "photo": "shopify://shop_images/Biseak-159-scaled.jpg",
-            "name": "Antoine Brisson",
-            "role": "",
-            "bio": "<p>Machiniste, patenteux, ingénieux et grand <em>chilleux. </em>Voici un couteau suisse à 10 000 fonctions.</p>"
-          }
-        },
-        "member_JPg6Rp": {
-          "type": "member",
-          "settings": {
-            "photo": "shopify://shop_images/felix.jpg",
-            "name": "Félix Boulay",
-            "role": "",
-            "bio": "<p>C'est lui le préféré de ta grand-mère. Serviable, efficace et courtois, c'est un premier de classe dans tous les domaines. </p>"
-          }
-        }
-      },
-      "block_order": [
-        "member_rcaNzh",
-        "member_NThWjk",
-        "member_AARFAq",
-        "member_JPg6Rp"
-      ],
-      "name": "Team Members",
-      "settings": {
-        "heading": "<h2><strong>Une équipe de passionnés de plein air</strong></h2>",
-        "subheading": "",
-        "heading_alignment": "center",
-        "heading_color": "#111111",
-        "members_per_row": 4,
-        "image_ratio": "1 / 1",
-        "round_photos": true,
-        "card_text_alignment": "center",
-        "section_padding": 20,
-        "background_color": "#ffffff",
-        "name_color": "#111111",
-        "role_color": "#555555",
-        "bio_color": "#444444"
-      }
-    },
     "main": {
       "type": "main-page",
       "blocks": {
@@ -1101,9 +1101,9 @@
   "order": [
     "hero_CDg6cV",
     "section_DLTnFP",
+    "team_members_EWFjDz",
     "section_y3WGL7",
     "carousel_NxKwwe",
-    "team_members_EWFjDz",
     "main"
   ]
 }
