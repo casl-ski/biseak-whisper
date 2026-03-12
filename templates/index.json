@@ -96,7 +96,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h1><strong>Sainte-Anne-des-Monts<br/>Haute-Gaspésie, QC</strong></h1>",
+                    "text": "<h1>Sainte-Anne-des-Monts<br/>Haute-Gaspésie, QC</h1>",
                     "width": "100%",
                     "max_width": "narrow",
                     "alignment": "center",
@@ -379,7 +379,7 @@
         "section_width": "page-width",
         "section_height": "full-screen",
         "section_height_custom": 5,
-        "color_scheme": "scheme-black-white-blue",
+        "color_scheme": "scheme-7",
         "toggle_overlay": true,
         "overlay_color": "#0303033b",
         "overlay_style": "solid",
@@ -420,11 +420,11 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2><strong>Pédalez ou pagayez dans des paysages extraordinaires</strong></h2>",
+                "text": "<h2>Pédalez ou pagayez dans des paysages extraordinaires</h2>",
                 "width": "100%",
                 "max_width": "narrow",
                 "alignment": "left",
-                "type_preset": "h3",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -473,7 +473,7 @@
                 "label": "Partir à l'aventure",
                 "link": "shopify://pages/location",
                 "open_in_new_tab": false,
-                "style_class": "button",
+                "style_class": "button-secondary",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -496,7 +496,142 @@
         "media_height": "50svh",
         "section_width": "full-width",
         "extend_media": true,
-        "color_scheme": "scheme-black-white-blue",
+        "color_scheme": "scheme-7",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "media_with_content_9t7A3t": {
+      "type": "media-with-content",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/Biseak-160-scaled.jpg",
+            "link": "",
+            "video_loop": true,
+            "video_autoplay": false,
+            "image_position": "cover",
+            "video_position": "cover"
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 24
+          },
+          "blocks": {
+            "text_6DfVLM": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Réparation et entretien</h2>",
+                "width": "100%",
+                "max_width": "narrow",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_ii4Mnn": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Louer un vélo de montagne ou une planche à pagaie vous permettra de ressentir de prés l’effet Haute-Gaspésie. Dépaysement et plaisir assuré.</p>",
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_gyEV8y": {
+              "type": "button",
+              "settings": {
+                "label": "Découvrir les services",
+                "link": "shopify://pages/entretien",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            },
+            "image_tYbUXK": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "image": "shopify://shop_images/accueil-bloc04.jpg",
+                "link": "",
+                "image_ratio": "adapt",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 24,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_6DfVLM",
+            "text_ii4Mnn",
+            "button_gyEV8y",
+            "image_tYbUXK"
+          ]
+        }
+      },
+      "name": "t:names.media_with_text",
+      "settings": {
+        "media_position": "left",
+        "media_width": "medium",
+        "media_height": "50svh",
+        "section_width": "full-width",
+        "extend_media": true,
+        "color_scheme": "scheme-8",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -938,7 +1073,7 @@
         "media_height": "60svh",
         "section_width": "full-width",
         "extend_media": true,
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-7",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -988,6 +1123,7 @@
   "order": [
     "hero_p9CmMG",
     "media_with_content_nrnzPh",
+    "media_with_content_9t7A3t",
     "product_list_themegen",
     "section_x8mrnx",
     "media_with_content_xMM9EF",

@@ -37,7 +37,7 @@
       "settings": {
         "speed": 5,
         "section_width": "page-width",
-        "color_scheme": "scheme-transparent-announcements",
+        "color_scheme": "scheme-2",
         "divider_width": 1,
         "padding-block-start": 15,
         "padding-block-end": 16
@@ -48,7 +48,7 @@
       "disabled": true,
       "name": "t:names.divider_section",
       "settings": {
-        "color_scheme": "scheme-transparent-announcements",
+        "color_scheme": "scheme-2",
         "section_width": "full-width",
         "thickness": 1,
         "corner_radius": "square",
@@ -97,7 +97,7 @@
           "static": true,
           "settings": {
             "menu": "main-menu",
-            "color_scheme": "",
+            "color_scheme": "scheme-1",
             "type_font_primary_size": "var(--font-size--body-md)",
             "menu_font_style": "inverse",
             "type_font_primary_link": "primary",
@@ -139,7 +139,7 @@
         "color_scheme_bottom": "",
         "color_scheme_transparent": "scheme-2",
         "enable_transparent_header_home": true,
-        "home_color_scheme": "default",
+        "home_color_scheme": "inverse",
         "enable_transparent_header_product": false,
         "product_color_scheme": "default",
         "enable_transparent_header_collection": false,
