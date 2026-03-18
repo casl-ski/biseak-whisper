@@ -825,11 +825,20 @@
                 "padding-inline-end": 0
               },
               "blocks": {
+                "custom_liquid_bjYr3B": {
+                  "type": "custom-liquid",
+                  "name": "t:names.custom_liquid",
+                  "settings": {
+                    "custom_liquid": "<h4>Heures d'ouverture</h4>\n<table style=\"width: 100%; border-collapse: collapse; border: none;\">\n  <tbody>\n    <tr><td><strong>Lundi</strong></td><td>Fermé</td></tr>\n    <tr><td><strong>Mardi</strong></td><td>10h à 17h</td></tr>\n    <tr><td><strong>Mercredi</strong></td><td>10h à 17h</td></tr>\n    <tr><td><strong>Jeudi</strong></td><td>10h à 17h</td></tr>\n    <tr><td><strong>Vendredi</strong></td><td>10h à 17h</td></tr>\n    <tr><td><strong>Samedi</strong></td><td>10h à 12h</td></tr>\n    <tr><td><strong>Dimanche</strong></td><td>Fermé</td></tr>\n  </tbody>\n</table>\n\n{% comment %}\nAjouter ou enlever les brackets comment et endcomment pour afficher\n\n\n<p><br><strong>Saison Hivernale</strong><br>Sur rendez-vous</p>\n{% endcomment %}"
+                  },
+                  "blocks": {}
+                },
                 "text_3niNLe": {
                   "type": "text",
                   "name": "t:names.heading",
+                  "disabled": true,
                   "settings": {
-                    "text": "<h4>Heures d'ouverture</h4><p>Mardi au Vendredi : 10 h 00 à 17 h 30<br/>Samedi: 10h00 à 12 h 30<br/><br/><strong>Saison Hivernale</strong><br/>Sur rendez-vous</p>",
+                    "text": "<h4>Heures d'ouverture</h4><p><strong>Lundi: </strong>Fermé<br/><strong>Mardi:</strong> 10h à 17h<br/><strong>Mercredi:</strong> 10h à 17h<br/><strong>Jeudi:</strong> 10h à 17h<br/><strong>Vendredi:</strong> 10h à 17h<br/><strong>Samedi:</strong> 10h à <em>12h<br/></em><strong>Dimanche: </strong>Fermé<br/><br/><strong>Saison Hivernale</strong><br/>Sur rendez-vous</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -853,6 +862,7 @@
                 }
               },
               "block_order": [
+                "custom_liquid_bjYr3B",
                 "text_3niNLe"
               ]
             }

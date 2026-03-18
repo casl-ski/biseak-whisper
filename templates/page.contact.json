@@ -16,7 +16,7 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "<h1>Nouveautés</h1>",
+            "text": "<h1>Contact</h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -122,7 +122,7 @@
         "gap": 16,
         "section_width": "page-width",
         "section_height": "auto",
-        "section_height_custom": 50,
+        "section_height_custom": 27,
         "color_scheme": "scheme-1",
         "toggle_overlay": true,
         "overlay_color": "#00000026",
@@ -268,11 +268,96 @@
         "padding-block-start": 32,
         "padding-block-end": 84
       }
+    },
+    "custom_liquid_bWCjR6": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"width: 80%; \nmargin: 0 auto; overflow: hidden; border-radius: 8px; margin-top: 20px;\">\n  <iframe \n    src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2610.9859508469767!2d-66.49006312228201!3d49.124901981912664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4c90c5eca976b4cb%3A0x74b1fd09118c68fe!2sBiseak%2C%20Atelier%20de%20v%C3%A9lo!5e0!3m2!1sen!2sca!4v1773789006836!5m2!1sen!2sca\"\n    width=\"100%\" \n    height=\"450\" \n    style=\"border:0;\" \n    allowfullscreen=\"\" \n    loading=\"lazy\" \n    referrerpolicy=\"no-referrer-when-downgrade\">\n  </iframe>\n</div>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "section_CEbQ3C": {
+      "type": "section",
+      "blocks": {
+        "text_DQCPie": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h3>Nous trouver:</h3>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "custom_liquid_PtK3GK": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"width: 1200px; height: 400px; margin: 0 auto; overflow: hidden; border-radius: 8px; margin-top: 20px;\">\n  <iframe \n    src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2610.9859508469767!2d-66.49006312228201!3d49.124901981912664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4c90c5eca976b4cb%3A0x74b1fd09118c68fe!2sBiseak%2C%20Atelier%20de%20v%C3%A9lo!5e0!3m2!1sen!2sca!4v1773789006836!5m2!1sen!2sca\"\n    width=\"100%\" \n    height=\"100%\" \n    style=\"border:0; display: block;\" \n    allowfullscreen=\"\" \n    loading=\"lazy\" \n    referrerpolicy=\"no-referrer-when-downgrade\">\n  </iframe>\n</div>"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_DQCPie",
+        "custom_liquid_PtK3GK"
+      ],
+      "name": "Google Maps",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "center",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 50,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "hero_3cNynw",
     "main",
-    "form"
+    "form",
+    "custom_liquid_bWCjR6",
+    "section_CEbQ3C"
   ]
 }

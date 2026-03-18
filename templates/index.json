@@ -856,7 +856,7 @@
       },
       "name": "t:names.products_grid",
       "settings": {
-        "collection": "components-example-products",
+        "collection": "produits-en-vedette",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 4,
@@ -868,7 +868,7 @@
         "icons_style": "arrow",
         "icons_shape": "none",
         "section_width": "full-width",
-        "horizontal_alignment": "flex-start",
+        "horizontal_alignment": "center",
         "gap": 28,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,

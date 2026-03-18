@@ -56,7 +56,7 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Header-Site-web.jpg",
+        "image_1": "shopify://shop_images/Header-Site-web_f7e0eecd-6257-4eff-85a3-4cf18cb4fc0b.jpg",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
@@ -73,9 +73,9 @@
         "vertical_alignment_flex_direction_column": "center",
         "gap": 16,
         "section_width": "page-width",
-        "section_height": "auto",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-8",
+        "section_height": "custom",
+        "section_height_custom": 40,
+        "color_scheme": "scheme-2",
         "toggle_overlay": true,
         "overlay_color": "#00000026",
         "overlay_style": "gradient",
@@ -250,7 +250,7 @@
             "photo": "shopify://shop_images/Biseak-14-scaled-e1742244597539.jpg",
             "name": "Clément Vallée",
             "role": "",
-            "bio": "<p>Le grand manitou, Il est à gauche, à droite et partout en même temps. Par contre, jamais il n'as manqué de temps pour aider un client.</p>"
+            "bio": "<p>Le grand manitou. Il est à gauche, à droite et partout en même temps. Par contre, il n'a jamais manqué de temps pour aider un client.</p>"
           }
         },
         "member_NThWjk": {
@@ -279,13 +279,23 @@
             "role": "",
             "bio": "<p>C'est lui le préféré de ta grand-mère. Serviable, efficace et courtois, c'est un premier de classe dans tous les domaines. </p>"
           }
+        },
+        "member_w89yAf": {
+          "type": "member",
+          "settings": {
+            "photo": "shopify://shop_images/Biseak-5-scaled.jpg",
+            "name": "Éloi Fournier",
+            "role": "",
+            "bio": "<p>C'est le dernier-né de l'équipe, le bambin. Il fait mal la vaisselle, mais est bon dans tout le reste.</p>"
+          }
         }
       },
       "block_order": [
         "member_rcaNzh",
         "member_NThWjk",
         "member_AARFAq",
-        "member_JPg6Rp"
+        "member_JPg6Rp",
+        "member_w89yAf"
       ],
       "name": "Team Members",
       "settings": {
@@ -293,7 +303,7 @@
         "subheading": "",
         "heading_alignment": "center",
         "heading_color": "#111111",
-        "members_per_row": 4,
+        "members_per_row": 5,
         "image_ratio": "1 / 1",
         "round_photos": true,
         "card_text_alignment": "center",
@@ -302,6 +312,17 @@
         "name_color": "#111111",
         "role_color": "#555555",
         "bio_color": "#444444"
+      }
+    },
+    "custom_liquid_4FP9Rc": {
+      "type": "custom-liquid",
+      "name": "Google Maps",
+      "settings": {
+        "custom_liquid": "<div style=\"width: 80%; \nmargin: 0 auto; overflow: hidden; border-radius: 8px; margin-top: 20px;\">\n  <iframe \n    src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2610.9859508469767!2d-66.49006312228201!3d49.124901981912664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4c90c5eca976b4cb%3A0x74b1fd09118c68fe!2sBiseak%2C%20Atelier%20de%20v%C3%A9lo!5e0!3m2!1sen!2sca!4v1773789006836!5m2!1sen!2sca\"\n    width=\"100%\" \n    height=\"450\" \n    style=\"border:0;\" \n    allowfullscreen=\"\" \n    loading=\"lazy\" \n    referrerpolicy=\"no-referrer-when-downgrade\">\n  </iframe>\n</div>",
+        "color_scheme": "",
+        "section_width": "full-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "section_y3WGL7": {
@@ -1102,6 +1123,7 @@
     "hero_CDg6cV",
     "section_DLTnFP",
     "team_members_EWFjDz",
+    "custom_liquid_4FP9Rc",
     "section_y3WGL7",
     "carousel_NxKwwe",
     "main"
