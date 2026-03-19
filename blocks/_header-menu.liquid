@@ -12,6 +12,24 @@
 %}
 
 {% case variant %}
+  {% when 'right_menu' %}
+    {%- if block_settings.right_menu != blank -%}
+      <nav class="header-menu__right-nav mobile:hidden" aria-label="Right navigation">
+        <ul class="header-menu__right-list list-unstyled" role="list">
+          {%- for link in block_settings.right_menu.links -%}
+            <li class="menu-list__list-item">
+              <a
+                href="{{ link.url }}"
+                class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}"
+              >
+                <span class="menu-list__link-title">{{- link.title -}}</span>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
   {% when 'mobile' %}
     <div
       class="header__drawer desktop:hidden"
@@ -222,6 +240,14 @@
 
   header-menu {
     width: 100%;
+  }
+
+  .header-menu__right-list {
+    display: flex;
+    align-items: center;
+    gap: var(--menu-horizontal-gap, var(--gap-xl));
+    margin: 0;
+    padding: 0;
   }
 
   /* Drawer menu featured content */
@@ -708,6 +734,11 @@
       "id": "menu",
       "label": "t:settings.menu",
       "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "right_menu",
+      "label": "Menu droite"
     },
     {
       "type": "color_scheme",

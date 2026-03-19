@@ -1,10 +1,10 @@
 
 
 {% liquid
-  assign order = 'logo,menu,localization,search,mobile_search,actions'
+  assign order = 'logo,menu,localization,search,mobile_search,right_menu_nav,actions'
 
   if shop.customer_accounts_enabled
-    assign order = 'mobile_search,logo,menu,localization,search,actions'
+    assign order = 'mobile_search,logo,menu,localization,search,right_menu_nav,actions'
   endif
 
   assign rows = 'top,bottom' | split: ','
@@ -62,6 +62,10 @@
     content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar', transparent: transparent
   endcapture
 
+  capture right_menu_nav
+    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'right_menu'
+  endcapture
+
   capture actions
     render 'header-actions'
   endcapture
@@ -74,23 +78,23 @@
   if section.settings.localization_position == 'left'
     if section.settings.search_position == 'left'
       if shop.customer_accounts_enabled
-        assign order = 'mobile_search,logo,search,localization,menu,actions'
+        assign order = 'mobile_search,logo,search,localization,menu,right_menu_nav,actions'
       else
-        assign order = 'logo,search,localization,menu,mobile_search,actions'
+        assign order = 'logo,search,localization,menu,mobile_search,right_menu_nav,actions'
       endif
     else
       if shop.customer_accounts_enabled
-        assign order = 'mobile_search,logo,localization,menu,search,actions'
+        assign order = 'mobile_search,logo,localization,menu,search,right_menu_nav,actions'
       else
-        assign order = 'logo,localization,menu,search,mobile_search,actions'
+        assign order = 'logo,localization,menu,search,mobile_search,right_menu_nav,actions'
       endif
     endif
   else
     if section.settings.search_position == 'left'
       if shop.customer_accounts_enabled
-        assign order = 'mobile_search,logo,search,menu,localization,actions'
+        assign order = 'mobile_search,logo,search,menu,localization,right_menu_nav,actions'
       else
-        assign order = 'logo,search,menu,localization,mobile_search,actions'
+        assign order = 'logo,search,menu,localization,mobile_search,right_menu_nav,actions'
       endif
     endif
   endif
@@ -388,7 +392,8 @@
         actions: actions,
         localization: localization_markup,
         search: search,
-        mobile_search: mobile_search
+        mobile_search: mobile_search,
+        right_menu_nav: right_menu_nav
       %}
     {% endcapture %}
 

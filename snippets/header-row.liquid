@@ -17,6 +17,8 @@
     case item
       when 'actions'
         assign item_column = 'right'
+      when 'right_menu_nav'
+        assign item_column = 'right'
     endcase
 
     if item_row == row
@@ -68,6 +70,8 @@
               {{ search }}
             {% when 'mobile_search' %}
               {{ mobile_search }}
+            {% when 'right_menu_nav' %}
+              {{ right_menu_nav }}
             {% when 'actions' %}
               {{ actions }}
           {% endcase %}

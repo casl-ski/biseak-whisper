@@ -316,6 +316,7 @@
     },
     "custom_liquid_4FP9Rc": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "Google Maps",
       "settings": {
         "custom_liquid": "<div style=\"width: 80%; \nmargin: 0 auto; overflow: hidden; border-radius: 8px; margin-top: 20px;\">\n  <iframe \n    src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2610.9859508469767!2d-66.49006312228201!3d49.124901981912664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4c90c5eca976b4cb%3A0x74b1fd09118c68fe!2sBiseak%2C%20Atelier%20de%20v%C3%A9lo!5e0!3m2!1sen!2sca!4v1773789006836!5m2!1sen!2sca\"\n    width=\"100%\" \n    height=\"450\" \n    style=\"border:0;\" \n    allowfullscreen=\"\" \n    loading=\"lazy\" \n    referrerpolicy=\"no-referrer-when-downgrade\">\n  </iframe>\n</div>",
