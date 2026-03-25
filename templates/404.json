@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "main-404",
@@ -15,7 +16,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h1>Page not found</h1>",
+            "text": "<h1>Oups, cette page est tombée en panne</h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -37,11 +38,34 @@
           },
           "blocks": {}
         },
+        "image_nRj4pa": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "image": "shopify://shop_images/chute-de-velo-compressed-cropped_7acda154-9bf6-4961-a4b3-6f23c64b2d8c.gif",
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 39,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "text_Ua9XAW": {
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>The link may be incorrect, or the page has been removed. </p>",
+            "text": "<p>Le lien est peut-être incorrect, ou cette page n'existe plus. <br/><br/>N'hésitez pas à nous contacter au <strong>{{ metaobjects.numero_de_tlel[\"418-764-6016\"][\"418_764_6016\"].value }}</strong><strong> </strong>ou nous écrire au<strong> </strong><strong>{{ metaobjects.numero_de_tlel[\"418-764-6016\"].courriel.value }}</strong> si vous avez besoin d'assistance</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -67,7 +91,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Continue shopping",
+            "label": "Retour à la boutique en ligne",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button",
@@ -81,6 +105,7 @@
       },
       "block_order": [
         "text_GqmVFf",
+        "image_nRj4pa",
         "text_Ua9XAW",
         "button_PAQMwR"
       ],
@@ -136,7 +161,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Discover something new</p>",
+                "text": "<p>Découvrir</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",

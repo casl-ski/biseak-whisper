@@ -608,26 +608,6 @@
                   },
                   "blocks": {}
                 },
-                "social_links_yXTgih": {
-                  "type": "social-links",
-                  "name": "t:names.social_media_links",
-                  "settings": {
-                    "facebook_url": "https://www.facebook.com/velobiseak",
-                    "instagram_url": "https://www.instagram.com/velobiseak/",
-                    "youtube_url": "",
-                    "tiktok_url": "",
-                    "twitter_url": "",
-                    "threads_url": "",
-                    "linkedin_url": "",
-                    "bluesky_url": "",
-                    "snapchat_url": "",
-                    "pinterest_url": "",
-                    "tumblr_url": "",
-                    "vimeo_url": "",
-                    "custom_url": ""
-                  },
-                  "blocks": {}
-                },
                 "text_XnWQ4Q": {
                   "type": "text",
                   "name": "t:names.heading",
@@ -653,12 +633,32 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
+                },
+                "social_links_yXTgih": {
+                  "type": "social-links",
+                  "name": "t:names.social_media_links",
+                  "settings": {
+                    "facebook_url": "https://www.facebook.com/velobiseak",
+                    "instagram_url": "https://www.instagram.com/velobiseak/",
+                    "youtube_url": "",
+                    "tiktok_url": "",
+                    "twitter_url": "",
+                    "threads_url": "",
+                    "linkedin_url": "",
+                    "bluesky_url": "",
+                    "snapchat_url": "",
+                    "pinterest_url": "",
+                    "tumblr_url": "",
+                    "vimeo_url": "",
+                    "custom_url": ""
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
                 "logo_9x7FY9",
-                "social_links_yXTgih",
-                "text_XnWQ4Q"
+                "text_XnWQ4Q",
+                "social_links_yXTgih"
               ]
             },
             "group_EfWbfD": {
