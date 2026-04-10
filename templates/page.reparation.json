@@ -506,7 +506,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "link": "",
+                "link": "shopify://pages/entretien-de-suspension",
                 "image_ratio": "adapt",
                 "width": "fill",
                 "custom_width": 100,
@@ -627,7 +627,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "link": "",
+                "link": "shopify://pages/montage-de-roue",
                 "image_ratio": "adapt",
                 "width": "fill",
                 "custom_width": 100,
@@ -748,7 +748,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "link": "",
+                "link": "shopify://pages/conversion-velo-electrique",
                 "image_ratio": "adapt",
                 "width": "fill",
                 "custom_width": 100,

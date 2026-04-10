@@ -1,0 +1,1016 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "section_WPCmUp": {
+      "type": "section",
+      "blocks": {
+        "group_jYm4yW": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "image_eciUAX": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "link": "",
+                "image_ratio": "adapt",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_kGeCff": {
+              "type": "text",
+              "name": "t:names.heading",
+              "disabled": true,
+              "settings": {
+                "text": "<h2>Intentional design</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_dMFttx": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>«Arrivez en vélo, repartez en vélo électrique» c’est exactement ça, notre approche. Grâce aux kits de conversion <strong>UGO CYCLE</strong>, on transforme votre bon vieux vélo en un vélo électrique puissant, fiable et toujours aussi confortable.</p><p>Ces kits sont vendus par <strong>UGO CYCLE</strong>, une entreprise québécoise qui sélectionne des moteurs de grande qualité provenant d’Asie. Nous sommes fiers d'offrir les produits d’UGO CYCLE pour la fiabilité des composantes, la facilité d’installation et de réparation, ainsi que pour la solidité de la garantie.</p><p>La conversion s’exécute généralement très bien sur des vélos à cadre <strong>en acier ou en aluminium</strong> (les cadres en carbone ne sont pas compatibles). Si tu as déjà un bon vélo à la maison, confortable et bien ajusté, la conversion est souvent <strong>la solution la plus économique </strong>pour passer à l’électrique sans compromis sur la qualité.</p>",
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_eciUAX",
+            "text_kGeCff",
+            "text_dMFttx"
+          ]
+        },
+        "group_tMyJTy": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "image_TFipAg": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "link": "",
+                "image_ratio": "adapt",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_bEmJ4j": {
+              "type": "text",
+              "name": "t:names.heading",
+              "disabled": true,
+              "settings": {
+                "text": "<h2>Quality first</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_RfJjPT": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p> Les kits de conversion électrique sont <strong>assemblés à la carte</strong> selon vos besoins. <strong>Deux options de moteurs</strong> sont offertes, combinées à <strong>deux types de batteries</strong>, avec le choix entre <strong>deux écrans</strong> et l’option d’ajouter ou non un <strong>accélérateur au pouce.</strong> Le chargeur est inclus dans chaque kit.</p><p>L’installation varie selon le modèle et la configuration choisie et prend généralement <strong>entre 2 et 4 heures</strong>, au tarif de <strong>95 $/heure</strong>. Les kits de conversion débutent à <strong>1350 $</strong>, et le prix peut varier selon les options sélectionnées.</p><p>Pour plus de détails techniques sur les composantes, visite <a href=\"https://ugocycle.com/trouse-delectrifications/\"><span style=\"text-decoration:underline\"><strong>https://ugocycle.com/trouse-delectrifications/</strong></span></a></p>",
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_TFipAg",
+            "text_bEmJ4j",
+            "text_RfJjPT"
+          ]
+        }
+      },
+      "block_order": [
+        "group_jYm4yW",
+        "group_tMyJTy"
+      ],
+      "name": "t:names.multicolumn",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "flex-start",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "section_myprhg": {
+      "type": "section",
+      "blocks": {
+        "text_tKyTJb": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h3><strong>FAQ — Conversion de vélo électrique</strong></h3>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "accordion_RwxGqR": {
+          "type": "accordion",
+          "name": "t:names.accordion",
+          "settings": {
+            "icon": "caret",
+            "dividers": true,
+            "type_preset": "h5",
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "accordion_row_kcwLwf": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Est-il possible d’installer la trousse de conversion UGO Cycle sur un vélo en carbone?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_TdUp3A": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Nous ne proposons pas la conversion des vélos en carbone en raison de la fragilité et de la nature friable de ce matériau. Cependant, les vélos avec des insertions en carbone à des endroits autres que le pédalier, comme une fourche par exemple, peuvent être transformés sans problème.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_TdUp3A"
+              ]
+            },
+            "accordion_row_XJcGMb": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Comment électrifier mon fat bike avec mon kit de conversion?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_aRXc6j": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>UGO Cycle propose un kit de conversion spécialement adapté aux fat bikes, avec des dimensions de boîtier de pédalier de 100 ou 120 mm. Cependant, en raison des spécificités géométriques de ce type de vélo, nous vous recommandons de nous contacter pour une évaluation plus approfondie de la compatibilité et des options disponibles.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_aRXc6j"
+              ]
+            },
+            "accordion_row_wFiVpN": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Est-ce que l'installation d’une trousse de conversion nécessite des modifications permanentes à mon vélo?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_ytrRLD": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Nous nous efforcerons d’expédier votre commande le plus rapidement possible. Une fois votre commande expédiée, vous recevrez un e-mail contenant des informations supplémentaires. Les délais de livraison varient en fonction de votre emplacement.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_ytrRLD"
+              ]
+            },
+            "accordion_row_yHk683": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Est-il facile d’installer la trousse de conversion sur différents types de vélos?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_NfgUWH": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>La trousse de conversion électrique UGO CYCLE est une solution qui s’installe avec succès sur environ 95% des vélos conventionnels dont la largeur des boîtiers de pédaliers est comprise entre 68 et 73mm. C’est là où réside toute l’ingéniosité de la solution universelle proposée par UGO CYCLE.</p><p>Parfois l’usure ou des pièces difformes (pédales, chaines, etc.) nécessites des ajustements ou remplacements. Si votre vélo s’avère un peu particulier, les kits nous saurons l’adapter à très faible coût.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_NfgUWH"
+              ]
+            },
+            "accordion_row_ayAtHX": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Combien de poids la trousse de conversion ajoute t-elle à mon vélo?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_meiCHY": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>La trousse de conversion UGO CYCLE ajoute généralement un maximum de 15lbs de poids supplémentaire à votre vélo. Ce poids comprend le bloc moteur pédalier, qui pèse 7.5 livres, et la batterie, qui pèse 7 et 8 livres selon le modèle choisi. Il est important de noter que la batterie est amovible, et nous vous recommandons de la retirer pour toutes les opérations de manutention, ce qui permet de diminuer le poids de la trousse de moitié et facilite le levage et le transport du vélo.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_meiCHY"
+              ]
+            },
+            "accordion_row_FePcVJ": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Lors de la conversion, vais-je conserver l'usage de mes dérailleurs?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_QhnXr4": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Lors de la conversion avec la trousse UGO CYCLE, vous conservez généralement l’usage de votre dérailleur arrière. Celui-ci peut toujours être utilisé pour aider votre moteur à mieux performer selon le dénivelé rencontré, ce qui vous permet de bénéficier d’une assistance adaptée à vos besoins. Cependant, comme le pédalier entier est remplacé dans le processus de conversion, le dérailleur avant sera retiré. Par exemple, sur un vélo équipé de 24 vitesses (3 plateaux centraux et 8 à l’arrière), le vélo électrique deviendra un vélo à 8 vitesses.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_QhnXr4"
+              ]
+            },
+            "accordion_row_6AC7dF": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Est-ce que le système est étanche à la pluie?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_xCtfrA": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Les moteurs sont certifiés IP54 tandis que les écrans sont certifiés IP65. Cette double certification assure une résistance aux intempéries, permettant aux ensembles de faire face à la pluie et à la neige dans des conditions d’utilisation standard. Cependant, il est recommandé de prévenir toute exposition prolongée à des conditions extrêmes, telles que laisser le vélo exposé à une pluie continue pendant de longues périodes.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_xCtfrA"
+              ]
+            },
+            "accordion_row_mqfNV7": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Quelles sont les fonctionnalités des différents tableaux de bord offerts par UGO Cycle?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_FPM4LB": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Nous proposons plusieurs écrans de contrôle avec ses trousses de conversion, chacun offrant des fonctionnalités spécifiques pour améliorer votre expérience de cyclisme. L’écran Original 4 propose 4 modes d’assistance et est le seul compatible avec la gâchette d’accélération (throttle), vous permettant d’accéder à la puissance du moteur sans nécessairement pédaler.</p><p>L’écran Compact 5 offre 5 modes d’assistance, ainsi qu’un odomètre très complet. De plus, il peut être jumelé par Bluetooth à l’application Ibike + pour une expérience de cyclisme connectée.</p><p>Les deux écrans offrent également un Mode 0 ou OFF, vous permettant de pédaler sans assistance tout en enregistrant vos données d’odomètre.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_FPM4LB"
+              ]
+            },
+            "accordion_row_QVgbr6": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Est-ce nécessaire de pédaler en permanence pour bénéficier de l’assistance électrique?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_RCDFir": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Avec notre écran Original 4, vous avez la possibilité d’installer en option une gâchette d’accélération, vous permettant d’accéder à la puissance du moteur sans nécessairement pédaler. Toutefois, conformément aux réglementations en matière de sécurité routière, l’utilisation de cette fonctionnalité nécessite l’installation de freins coupe-circuits (inclus avec l’option). Nos systèmes sont conçus pour garantir une conduite sûre et conforme à la législation en vigueur, assurant ainsi votre sécurité sur la route.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_RCDFir"
+              ]
+            },
+            "accordion_row_Bb9dpp": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Quelle est la vitesse maximale que mon kit de conversion électrique peut atteindre?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_TkXtfc": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>La trousse de conversion électrique, y compris son moteur et son contrôleur, est paramétrée pour respecter le Règlement fédéral sur les vélos à assistance électrique du Canada. Cela signifie que l’assistance électrique sera automatiquement interrompue lorsque vous atteignez la vitesse de 32 km/h, permettant à votre force musculaire de vous propulser au-delà de cette vitesse. Cependant, il est important de noter que, en tant que cycliste, vous devez respecter les limitations de vitesse imposées par le code de la sécurité routière, tout comme tout autre véhicule circulant sur la voie publique.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_TkXtfc"
+              ]
+            },
+            "accordion_row_EB9F3y": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Quel est la puissance du moteur?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_TTffq6": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Nous installons des moteurs pédaliers de 48V / 500W équipés de capteurs de couple, conformes aux codes de la sécurité routière. Sur demande spéciale, nous proposons également un moteur de 48V / 750 W avec la même technologie de capteur de couple, destiné à un usage hors route uniquement, car il dépasse la limite de 500 watts autorisée au Canada. Nos moteurs développent jusqu’à 90 Nm de couple et utilisent la transmission du vélo pour permettre aux cyclistes d’optimiser la puissance du moteur en fonction du dénivelé.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_TTffq6"
+              ]
+            },
+            "accordion_row_UMfnC6": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Quelle est la durée de vie de ma batterie Li-Ion?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_PzL7Td": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Les batteries Li-Ion sont conçues pour offrir une durée de vie optimale grâce à des cellules de qualité supérieure de marques renommées telles que LG ou Samsung, protégées par un système avancé de gestion de batterie (BMS). Avec une durée de vie calendaire d’environ 6 ans et jusqu’à 800 cycles de charge/décharge complets, elles peuvent parcourir entre 30 000 et 40 000 km en une utilisation quotidienne. Notre équipe vous informera de tout ce qu’il y a à savoir pour maximiser leur longévité.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_PzL7Td"
+              ]
+            },
+            "accordion_row_F7fD74": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Combien de temps faut-il pour recharger la batterie?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_NG8Kt7": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Le temps de charge varie selon la capacité de la batterie et du chargeur. Avec nos chargeurs standards 48V/2.0Ah, vous pouvez recharger la batterie de 0 à 100% en un maximum de 6.5 heures pour la batterie de 48V/12.8Ah et de 7.5 heures pour la batterie de 48V/15Ah. Si vous êtes pressé, après seulement 3 heures, la charge atteindra 80%. Vous pouvez charger la batterie à tout moment, sans attendre qu’elle soit complètement épuisée.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_NG8Kt7"
+              ]
+            },
+            "accordion_row_ir6mHN": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Quelle est la durée des garanties sur les kits de conversion électrique UGO Cycle?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_jQKrWz": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Les kits de conversion électrique UGO Cycle sont installés sur vos vélos avec l’optique de vous offrir un service exceptionnel visant votre entière satisfaction. Ainsi, tous les kits de conversion électriques UGO Cycle sont couverts par une garantie limitée de (12) douze mois couvrant les pièces et la main-d’œuvre.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_jQKrWz"
+              ]
+            }
+          },
+          "block_order": [
+            "accordion_row_kcwLwf",
+            "accordion_row_XJcGMb",
+            "accordion_row_wFiVpN",
+            "accordion_row_yHk683",
+            "accordion_row_ayAtHX",
+            "accordion_row_FePcVJ",
+            "accordion_row_6AC7dF",
+            "accordion_row_mqfNV7",
+            "accordion_row_QVgbr6",
+            "accordion_row_Bb9dpp",
+            "accordion_row_EB9F3y",
+            "accordion_row_UMfnC6",
+            "accordion_row_F7fD74",
+            "accordion_row_ir6mHN"
+          ]
+        }
+      },
+      "block_order": [
+        "text_tKyTJb",
+        "accordion_RwxGqR"
+      ],
+      "name": "t:names.faq_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_WPCmUp",
+    "section_myprhg"
+  ]
+}

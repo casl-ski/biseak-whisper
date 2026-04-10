@@ -245,11 +245,12 @@
         "collection_list": [
           "guidons",
           "potences",
+          "guidoline",
           "poignees"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,
-        "columns": 3,
+        "columns": 6,
         "mobile_columns": "2",
         "mobile_card_size": "44cqw",
         "columns_gap": 8,

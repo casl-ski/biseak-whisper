@@ -244,13 +244,14 @@
       "settings": {
         "collection_list": [
           "roulements-a-billes",
+          "jeux-de-pedalier",
+          "jeux-de-direction",
           "pieces-de-cadre",
-          "cables-et-gaines",
-          "produits-dentretien"
+          "cables-et-gaines"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,
-        "columns": 4,
+        "columns": 5,
         "mobile_columns": "2",
         "mobile_card_size": "44cqw",
         "columns_gap": 8,

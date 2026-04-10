@@ -243,9 +243,9 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "pompes",
-          "produits-dentretien",
-          "outils"
+          "cuissards-junior",
+          "shorts-homme-1",
+          "maillots-junior"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,

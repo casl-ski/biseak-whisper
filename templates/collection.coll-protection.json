@@ -244,7 +244,6 @@
       "settings": {
         "collection_list": [
           "casques",
-          "gants",
           "equipements-de-protection"
         ],
         "layout_type": "carousel",
