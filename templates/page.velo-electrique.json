@@ -100,7 +100,7 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Header-Atelier-1_b33185c3-7223-4fea-900b-6249111048be.jpg",
+        "image_1": "shopify://shop_images/IMG_09_compressed.jpg",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
@@ -225,8 +225,9 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/IMG_08_compressed.jpg",
                 "link": "",
-                "image_ratio": "adapt",
+                "image_ratio": "landscape",
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
@@ -347,8 +348,9 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/IMG_07_compressed.jpg",
                 "link": "",
-                "image_ratio": "adapt",
+                "image_ratio": "landscape",
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
