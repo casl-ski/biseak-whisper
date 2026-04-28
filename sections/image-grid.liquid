@@ -1,0 +1,409 @@
+{% comment %} Image Grid Section {% endcomment %}
+
+<div class="image-grid-section color-{{ section.settings.color_scheme }}" style="padding-block-start: {{ section.settings.padding_top }}px; padding-block-end: {{ section.settings.padding_bottom }}px;">
+  <div class="image-grid-inner{% if section.settings.section_width == 'page-width' %} page-width{% endif %}">
+
+    <div
+      class="image-grid{% if section.settings.vertical_on_mobile %} image-grid--vertical-mobile{% endif %}"
+      style="--images-per-row: {{ section.settings.images_per_row }}; --grid-gap: {{ section.settings.gap }}px;"
+    >
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign bs = block.settings
+          assign ratio = 1
+          case bs.image_ratio
+            when 'landscape'
+              assign ratio = '16 / 9'
+            when 'portrait'
+              assign ratio = '4 / 5'
+            when 'square'
+              assign ratio = '1 / 1'
+            when 'adapt'
+              if bs.image != blank
+                assign ratio = bs.image.aspect_ratio
+              else
+                assign ratio = 1
+              endif
+          endcase
+          if ratio == 0 or ratio == null
+            assign ratio = 1
+          endif
+        -%}
+
+        {%- capture item_style -%}
+          --ratio: {{ ratio }};
+          {% render 'size-style', settings: bs %}
+          {% render 'spacing-style', settings: bs %}
+        {%- endcapture -%}
+
+        {%- capture img_border_style -%}
+          --ratio: {{ ratio }};
+          {% render 'border-override', settings: bs %}
+        {%- endcapture -%}
+
+        {%- if bs.link != blank -%}
+          <a
+            href="{{ bs.link }}"
+            class="image-grid__item image-block image-block--height-{{ bs.height }} spacing-style size-style"
+            style="{{ item_style }}"
+            {% if bs.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+            {{ block.shopify_attributes }}
+          >
+        {%- else -%}
+          <div
+            class="image-grid__item image-block image-block--height-{{ bs.height }} spacing-style size-style"
+            style="{{ item_style }}"
+            {{ block.shopify_attributes }}
+          >
+        {%- endif -%}
+
+          {%- if bs.image != blank -%}
+            {{
+              bs.image
+              | image_url: width: 3840
+              | image_tag:
+                width: bs.image.width,
+                widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+                height: bs.image.height,
+                class: 'image-block__image border-style',
+                style: img_border_style,
+                loading: 'lazy',
+                sizes: 'auto'
+            }}
+          {%- else -%}
+            <div class="image-grid__placeholder border-style" style="{{ img_border_style }}">
+              {{ 'detailed-apparel-1' | placeholder_svg_tag: 'hero__image' }}
+            </div>
+          {%- endif -%}
+
+        {%- if bs.link != blank -%}
+          </a>
+        {%- else -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .image-grid-section {
+    box-sizing: border-box;
+  }
+
+  .image-grid-inner {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .image-grid-inner.page-width {
+    max-width: var(--page-width, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--page-width-padding, 24px);
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--images-per-row, 3), 1fr);
+    gap: var(--grid-gap, 16px);
+  }
+
+  .image-grid__placeholder {
+    aspect-ratio: var(--ratio, 1);
+    background: #f0f0f0;
+    overflow: hidden;
+  }
+
+  .image-grid__placeholder svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 749px) {
+    .image-grid--vertical-mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Image Grid",
+  "tag": "section",
+  "class": "image-grid-section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "images_per_row",
+      "label": "Images per row",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "vertical_on_mobile",
+      "label": "Stack vertically on mobile (1 per row)",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between images",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        { "value": "page-width", "label": "Page width" },
+        { "value": "full-width", "label": "Full width" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_tab",
+          "label": "Open link in new tab",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Size"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Aspect ratio",
+          "options": [
+            { "value": "adapt", "label": "Auto" },
+            { "value": "portrait", "label": "Portrait" },
+            { "value": "square", "label": "Square" },
+            { "value": "landscape", "label": "Landscape" }
+          ],
+          "default": "adapt"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Desktop width",
+          "options": [
+            { "value": "fit-content", "label": "Fit content" },
+            { "value": "fill", "label": "Fill" },
+            { "value": "custom", "label": "Custom" }
+          ],
+          "default": "fill"
+        },
+        {
+          "type": "range",
+          "id": "custom_width",
+          "label": "Custom width",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 100,
+          "visible_if": "{{ block.settings.width == 'custom' }}"
+        },
+        {
+          "type": "select",
+          "id": "width_mobile",
+          "label": "Mobile width",
+          "options": [
+            { "value": "fit-content", "label": "Fit content" },
+            { "value": "fill", "label": "Fill" },
+            { "value": "custom", "label": "Custom" }
+          ],
+          "default": "fill"
+        },
+        {
+          "type": "range",
+          "id": "custom_width_mobile",
+          "label": "Custom width",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 100,
+          "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+        },
+        {
+          "type": "select",
+          "id": "height",
+          "label": "Height",
+          "options": [
+            { "value": "fit", "label": "Fit content" },
+            { "value": "fill", "label": "Fill" }
+          ],
+          "default": "fit",
+          "visible_if": "{{ block.settings.image_ratio == 'adapt' }}"
+        },
+        {
+          "type": "header",
+          "content": "Borders"
+        },
+        {
+          "type": "select",
+          "id": "border",
+          "label": "Style",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "solid", "label": "Solid" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "range",
+          "id": "border_width",
+          "label": "Thickness",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 1,
+          "visible_if": "{{ block.settings.border != 'none' }}"
+        },
+        {
+          "type": "range",
+          "id": "border_opacity",
+          "label": "Opacity",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 100,
+          "visible_if": "{{ block.settings.border != 'none' }}"
+        },
+        {
+          "type": "range",
+          "id": "border_radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Padding"
+        },
+        {
+          "type": "range",
+          "id": "padding-block-start",
+          "label": "Top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding-block-end",
+          "label": "Bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding-inline-start",
+          "label": "Left",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding-inline-end",
+          "label": "Right",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Grid",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

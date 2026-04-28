@@ -9,14 +9,24 @@
  */
 {
   "sections": {
-    "hero_3cNynw": {
+    "hero_x8Cmrd": {
       "type": "hero",
       "blocks": {
-        "text_adUw4w": {
-          "type": "text",
-          "disabled": true,
+        "breadcrumb_kEKhGY": {
+          "type": "breadcrumb",
+          "name": "Breadcrumb",
           "settings": {
-            "text": "<h1>Contact</h1>",
+            "text_color": "#ffffff",
+            "font_size": 13,
+            "alignment": "left",
+            "padding": 8
+          },
+          "blocks": {}
+        },
+        "text_ayBwgD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ closest.page.title }}</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -38,7 +48,7 @@
           },
           "blocks": {}
         },
-        "text_4Gq6KU": {
+        "text_bd76tF": {
           "type": "text",
           "disabled": true,
           "settings": {
@@ -64,7 +74,7 @@
           },
           "blocks": {}
         },
-        "button_HcVyme": {
+        "button_RJknTJ": {
           "type": "button",
           "name": "t:names.button",
           "disabled": true,
@@ -79,32 +89,18 @@
             "custom_width_mobile": 100
           },
           "blocks": {}
-        },
-        "spacer_8cWajA": {
-          "type": "spacer",
-          "name": "t:names.spacer",
-          "settings": {
-            "size": "pixel",
-            "percent_size": 100,
-            "pixel_size": 120,
-            "custom_mobile_size": false,
-            "size_mobile": "percent",
-            "percent_size_mobile": 100,
-            "pixel_size_mobile": 120
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "text_adUw4w",
-        "text_4Gq6KU",
-        "button_HcVyme",
-        "spacer_8cWajA"
+        "breadcrumb_kEKhGY",
+        "text_ayBwgD",
+        "text_bd76tF",
+        "button_RJknTJ"
       ],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Header-Site-web-Recupere_e0750950-ca23-43b1-a0e6-afe3015e0db3.jpg",
+        "image_1": "shopify://shop_images/Biseak-22.jpg",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
@@ -121,9 +117,9 @@
         "vertical_alignment_flex_direction_column": "center",
         "gap": 16,
         "section_width": "page-width",
-        "section_height": "auto",
-        "section_height_custom": 27,
-        "color_scheme": "scheme-1",
+        "section_height": "custom",
+        "section_height_custom": 40,
+        "color_scheme": "scheme-2",
         "toggle_overlay": true,
         "overlay_color": "#00000026",
         "overlay_style": "gradient",
@@ -137,14 +133,14 @@
     "main": {
       "type": "main-page",
       "blocks": {
-        "title": {
+        "heading": {
           "type": "text",
-          "name": "t:names.title",
+          "name": "Title",
           "settings": {
             "text": "<h1>{{ closest.page.title }}</h1>",
             "width": "100%",
             "max_width": "normal",
-            "alignment": "center",
+            "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-primary--family)",
             "font_size": "",
@@ -163,22 +159,43 @@
           },
           "blocks": {}
         },
-        "content": {
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "marquee_LQbDd7": {
+      "type": "marquee",
+      "blocks": {
+        "text_LfBdBK": {
           "type": "text",
-          "name": "t:names.content",
           "settings": {
-            "text": "{{ closest.page.content }}",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
+            "text": "<p>Plateforme de location disponible bientôt - Plateforme de location disponible bientôt - Plateforme de location disponible bientôt - Plateforme de location disponible bientôt - Plateforme de location disponible bientôt - Plateforme de location disponible bientôt - </p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "3rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
             "case": "none",
-            "wrap": "pretty",
-            "color": "",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -191,104 +208,25 @@
         }
       },
       "block_order": [
-        "title",
-        "content"
+        "text_LfBdBK"
       ],
+      "name": "t:names.marquee_section",
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
+        "movement_direction": "normal",
         "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 0
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 24
       }
     },
-    "form": {
+    "section_ktbUGB": {
       "type": "section",
       "blocks": {
-        "contact_form_UwiCkQ": {
-          "type": "contact-form",
-          "settings": {
-            "width": "custom",
-            "custom_width": 50,
-            "width_mobile": "custom",
-            "custom_width_mobile": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "submit-button": {
-              "type": "contact-form-submit-button",
-              "static": true,
-              "settings": {
-                "label": "Envoyer",
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
-      },
-      "block_order": [
-        "contact_form_UwiCkQ"
-      ],
-      "name": "t:names.contact_form",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-1",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 32,
-        "padding-block-end": 84
-      }
-    },
-    "custom_liquid_bWCjR6": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "<div style=\"width: 80%; \nmargin: 0 auto; overflow: hidden; border-radius: 8px; margin-top: 20px;\">\n  <iframe \n    src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2610.9859508469767!2d-66.49006312228201!3d49.124901981912664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4c90c5eca976b4cb%3A0x74b1fd09118c68fe!2sBiseak%2C%20Atelier%20de%20v%C3%A9lo!5e0!3m2!1sen!2sca!4v1773789006836!5m2!1sen!2sca\"\n    width=\"100%\" \n    height=\"450\" \n    style=\"border:0;\" \n    allowfullscreen=\"\" \n    loading=\"lazy\" \n    referrerpolicy=\"no-referrer-when-downgrade\">\n  </iframe>\n</div>",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "section_CEbQ3C": {
-      "type": "section",
-      "blocks": {
-        "text_DQCPie": {
+        "text_zkBAer": {
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h3>Nous trouver:</h3>",
+            "text": "<h2>En Attendant</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -310,32 +248,66 @@
           },
           "blocks": {}
         },
-        "custom_liquid_PtK3GK": {
-          "type": "custom-liquid",
-          "name": "t:names.custom_liquid",
+        "text_WG9mjA": {
+          "type": "text",
+          "name": "t:names.text",
           "settings": {
-            "custom_liquid": "<div style=\"width: 1200px; height: 400px; margin: 0 auto; overflow: hidden; border-radius: 8px; margin-top: 20px;\">\n  <iframe \n    src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1152394.5694558145!2d-66.79389968251054!3d48.65252744144574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4c90c5eca976b4cb%3A0x74b1fd09118c68fe!2sBiseak%2C%20Atelier%20de%20v%C3%A9lo!5e0!3m2!1sfr!2sca!4v1777321385593!5m2!1sfr!2sca\"\n    width=\"100%\" \n    height=\"100%\" \n    style=\"border:0; display: block;\" \n    allowfullscreen=\"\" \n    loading=\"lazy\" \n    referrerpolicy=\"no-referrer-when-downgrade\">\n  </iframe>\n</div>"
+            "text": "<p>Appelez-nous, passez-nous voir en magasin, ou <a href=\"/pages/contact\" title=\"Contact\">contactez-nous en cliquant ici.</a></p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_YJmU8J": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Contact",
+            "link": "shopify://pages/contact",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "text_DQCPie",
-        "custom_liquid_PtK3GK"
+        "text_zkBAer",
+        "text_WG9mjA",
+        "button_YJmU8J"
       ],
-      "name": "Google Maps",
+      "name": "t:names.rich_text_section",
       "settings": {
-        "content_direction": "row",
+        "content_direction": "column",
         "vertical_on_mobile": true,
-        "horizontal_alignment": "center",
+        "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 50,
+        "vertical_alignment_flex_direction_column": "flex-start",
+        "gap": 25,
         "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
+        "section_height": "custom",
+        "section_height_custom": 20,
         "color_scheme": "",
         "background_media": "none",
         "video_position": "cover",
@@ -348,16 +320,15 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     }
   },
   "order": [
-    "hero_3cNynw",
+    "hero_x8Cmrd",
     "main",
-    "form",
-    "custom_liquid_bWCjR6",
-    "section_CEbQ3C"
+    "marquee_LQbDd7",
+    "section_ktbUGB"
   ]
 }

@@ -12,9 +12,36 @@
     "hero_x8Cmrd": {
       "type": "hero",
       "blocks": {
+        "text_TNeVL8": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p><a href=\"/\" title=\"/\">Acceuil</a> &gt; <a href=\"/pages/entretien\" title=\"Roulez mieux avec notre service d’entretien et réparation de vélo\">Roulez mieux avec notre service d’entretien et réparation de vélo</a> &gt; {{ closest.page.title }}</p>",
+            "width": "fit-content",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "breadcrumb_kEKhGY": {
           "type": "breadcrumb",
           "name": "Breadcrumb",
+          "disabled": true,
           "settings": {
             "text_color": "#ffffff",
             "font_size": 13,
@@ -92,6 +119,7 @@
         }
       },
       "block_order": [
+        "text_TNeVL8",
         "breadcrumb_kEKhGY",
         "text_ayBwgD",
         "text_bd76tF",
@@ -176,6 +204,57 @@
         "color_scheme": "",
         "padding-block-start": 40,
         "padding-block-end": 80
+      }
+    },
+    "section_hBC4fc": {
+      "type": "section",
+      "blocks": {
+        "button_Ra8GGt": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "← Retour au menu précédent",
+            "link": "shopify://pages/entretien",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "button_Ra8GGt"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "custom",
+        "section_height_custom": 5,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "section_rbG78E": {
@@ -274,7 +353,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Les roues, c’est bien plus qu’un simple composant : c’est <strong>au minimum la moitié d’un vélo</strong>. Peu importe la discipline — route ou montagne — une bonne paire de roues transforme complètement la conduite et le ressenti. Rigidité, souplesse, réactivité, solidité : tout passe par elles. En montagne, des roues bien pensées offrent un vélo plus précis, plus solide et plus tolérant aux impacts. En route, le profil de jante, la largeur et le poids influencent directement l’aérodynamisme, la stabilité et l’efficacité dans les relances et les virages. Changer de roues, c’est souvent <strong>le changement le plus marquant que l’on peut faire sur un vélo</strong>, et pourtant, c’est aussi l’un des plus négligés. Des roues de qualité, montées sur mesure, peuvent littéralement donner une seconde vie à ton vélo.</p>",
+                "text": "<h5>Les roues, c’est bien plus qu’un simple composant : c’est <strong>au minimum la moitié d’un vélo</strong>. Peu importe la discipline — route ou montagne — une bonne paire de roues transforme complètement la conduite et le ressenti. Rigidité, souplesse, réactivité, solidité : tout passe par elles. En montagne, des roues bien pensées offrent un vélo plus précis, plus solide et plus tolérant aux impacts. En route, le profil de jante, la largeur et le poids influencent directement l’aérodynamisme, la stabilité et l’efficacité dans les relances et les virages. Changer de roues, c’est souvent <strong>le changement le plus marquant que l’on peut faire sur un vélo</strong>, et pourtant, c’est aussi l’un des plus négligés. Des roues de qualité, montées sur mesure, peuvent littéralement donner une seconde vie à ton vélo.</h5>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "center",
@@ -396,7 +475,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Chaque roue commence par un choix réfléchi : <strong>un moyeu et une jante</strong>, parfois de marques différentes, réunis pour former un ensemble cohérent. Viennent ensuite <strong>les</strong> <strong>rayons</strong>, leur type et leur disposition influencent directement le poids, la rigidité et la durabilité.<br/> À l’aide de calculs précis, nous déterminons la longueur exacte des rayons et le <strong>mode de tressage</strong> adapté à votre usage — plus léger et dynamique, ou plus robuste et adapté aux charges lourdes.<br/> Le montage est ensuite réalisé à la main, avec une attention méticuleuse portée à la <strong>tension et à l’équilibrage</strong>, pour obtenir une roue parfaitement ronde, stable latéralement et verticalement. C’est un art, et c’est exactement ce que nous faisons.</p><p>TARIF: 95$/h – 350$/paire de roues</p>",
+                "text": "<h5>Chaque roue commence par un choix réfléchi : <strong>un moyeu et une jante</strong>, parfois de marques différentes, réunis pour former un ensemble cohérent. Viennent ensuite <strong>les</strong> <strong>rayons</strong>, leur type et leur disposition influencent directement le poids, la rigidité et la durabilité.  À l’aide de calculs précis, nous déterminons la longueur exacte des rayons et le <strong>mode de tressage</strong> adapté à votre usage — plus léger et dynamique, ou plus robuste et adapté aux charges lourdes. Le montage est ensuite réalisé à la main, avec une attention méticuleuse portée à la <strong>tension et à l’équilibrage</strong>, pour obtenir une roue parfaitement ronde, stable latéralement et verticalement. C’est un art, et c’est exactement ce que nous faisons.</h5><h5>TARIF: 95$/h – 350$/paire de roues</h5>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "center",
@@ -430,6 +509,9 @@
         "group_Hf9tai",
         "group_78kxLR"
       ],
+      "custom_css": [
+        "h5 {text-align: justify;}"
+      ],
       "name": "t:names.multicolumn",
       "settings": {
         "content_direction": "row",
@@ -455,7 +537,7 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 48,
+        "padding-block-start": 0,
         "padding-block-end": 48
       }
     },
@@ -1395,6 +1477,7 @@
   "order": [
     "hero_x8Cmrd",
     "main",
+    "section_hBC4fc",
     "section_rbG78E",
     "section_NkCdUk"
   ]

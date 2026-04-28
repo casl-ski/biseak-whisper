@@ -12,14 +12,29 @@
     "hero_x8Cmrd": {
       "type": "hero",
       "blocks": {
-        "breadcrumb_kEKhGY": {
-          "type": "breadcrumb",
-          "name": "Breadcrumb",
+        "text_eLLNh4": {
+          "type": "text",
+          "name": "t:names.text",
           "settings": {
-            "text_color": "#ffffff",
-            "font_size": 13,
+            "text": "<p><a href=\"/\" title=\"/\">Acceuil</a> &gt; <a href=\"/pages/entretien\" title=\"Roulez mieux avec notre service d’entretien et réparation de vélo\">Roulez mieux avec notre service d’entretien et réparation de vélo</a>&gt; {{ closest.page.title }}</p>",
+            "width": "fit-content",
+            "max_width": "none",
             "alignment": "left",
-            "padding": 8
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -48,32 +63,6 @@
           },
           "blocks": {}
         },
-        "text_bd76tF": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Fabriqué avec soin et inconditionnellement apprécié par nos clients.</p>",
-            "width": "fit-content",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 32,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "button_RJknTJ": {
           "type": "button",
           "name": "t:names.button",
@@ -92,9 +81,8 @@
         }
       },
       "block_order": [
-        "breadcrumb_kEKhGY",
+        "text_eLLNh4",
         "text_ayBwgD",
-        "text_bd76tF",
         "button_RJknTJ"
       ],
       "name": "t:names.hero",
@@ -128,6 +116,58 @@
         "reflection_opacity": 75,
         "padding-block-start": 40,
         "padding-block-end": 40
+      }
+    },
+    "section_gQ7frn": {
+      "type": "section",
+      "blocks": {
+        "button_6jBTzG": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Retour au menu précédent",
+            "link": "shopify://pages/entretien",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "button_6jBTzG"
+      ],
+      "disabled": true,
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "custom",
+        "section_height_custom": 5,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "main": {
@@ -178,6 +218,57 @@
         "padding-block-end": 80
       }
     },
+    "section_LqXR8J": {
+      "type": "section",
+      "blocks": {
+        "button_QVzYam": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "← Retour au menu précédent",
+            "link": "shopify://pages/entretien",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "button_QVzYam"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "custom",
+        "section_height_custom": 5,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "section_yFzmij": {
       "type": "section",
       "blocks": {
@@ -194,7 +285,7 @@
             "vertical_alignment_flex_direction_column": "center",
             "gap": 8,
             "width": "fill",
-            "custom_width": 100,
+            "custom_width": 30,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
@@ -252,9 +343,9 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<h4>Sur un vélo de montagne, les suspensions encaissent tout : gros impacts lors des sauts et des drops, mais aussi une multitude de petits chocs rapides dans les sections techniques à haute vitesse. À chaque sortie, ce sont <strong>des centaines de pièces internes</strong> (joints, seals et composantes mobiles) qui sont mises à rude épreuve.</h4><h4>Avec le temps, la poussière, l’eau et les contaminants s’infiltrent, accélérant l’usure et réduisant graduellement les performances, souvent sans qu’on s’en rende compte. La suspension devient moins sensible et moins efficace.</h4><h4>Les manufacturiers recommandent un entretien régulier aux <strong>50 heures d’utilisation</strong>, et un entretien complet aux <strong>200 heures</strong>. Chez Biseak, on s’occupe de redonner à tes suspensions leur fonctionnement d’origine. Ne les néglige pas : un entretien régulier, c’est plus de contrôle, plus de confort et plus de plaisir, saison après saison.</h4>",
-                "width": "100%",
-                "max_width": "normal",
+                "text": "<h5>Sur un vélo de montagne, les suspensions encaissent tout : gros impacts lors des sauts et des drops, mais aussi une multitude de petits chocs rapides dans les sections techniques à haute vitesse. À chaque sortie, ce sont <strong>des centaines de pièces internes</strong> (joints, seals et composantes mobiles) qui sont mises à rude épreuve.</h5><h5>Avec le temps, la poussière, l’eau et les contaminants s’infiltrent, accélérant l’usure et réduisant graduellement les performances, souvent sans qu’on s’en rende compte. La suspension devient moins sensible et moins efficace.</h5><h5>Les manufacturiers recommandent un entretien régulier aux <strong>50 heures d’utilisation</strong>, et un entretien complet aux <strong>200 heures</strong>. Chez Biseak, on s’occupe de redonner à tes suspensions leur fonctionnement d’origine. Ne les néglige pas : un entretien régulier, c’est plus de contrôle, plus de confort et plus de plaisir, saison après saison.</h5>",
+                "width": "fit-content",
+                "max_width": "none",
                 "alignment": "center",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
@@ -380,6 +471,9 @@
         "group_AEMNUm",
         "group_xm9q7L"
       ],
+      "custom_css": [
+        "h5 {line-height: 1.5;}"
+      ],
       "name": "t:names.multicolumn",
       "settings": {
         "content_direction": "row",
@@ -405,14 +499,16 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 48,
+        "padding-block-start": 0,
         "padding-block-end": 48
       }
     }
   },
   "order": [
     "hero_x8Cmrd",
+    "section_gQ7frn",
     "main",
+    "section_LqXR8J",
     "section_yFzmij"
   ]
 }
