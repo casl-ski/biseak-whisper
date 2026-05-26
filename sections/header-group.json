@@ -14,11 +14,24 @@
     "header_announcements_QTBwtW": {
       "type": "header-announcements",
       "blocks": {
+        "announcement_yDeYFM": {
+          "type": "_announcement",
+          "name": "t:names.announcement",
+          "settings": {
+            "text": "Livraison gratuite sur les commandes de + 150$, ou +200$ hors QC, ONT, NB.",
+            "link": "",
+            "font": "var(--font-body--family)",
+            "font_size": "0.875rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
         "announcement_cXDVCA": {
           "type": "_announcement",
-          "disabled": true,
           "settings": {
-            "text": "Découvrez nos nouveautés",
+            "text": "Consultez notre<strong> </strong><a href=\"/pages/expedition\" target=\"_blank\" title=\"Politique de Livraison\"><span style=\"text-decoration:underline\"><strong>politique de livraison</strong></span></a><strong> </strong>pour plus de détails",
             "link": "",
             "font": "var(--font-body--family)",
             "font_size": "0.875rem",
@@ -30,9 +43,9 @@
         }
       },
       "block_order": [
+        "announcement_yDeYFM",
         "announcement_cXDVCA"
       ],
-      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,

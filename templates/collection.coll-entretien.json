@@ -247,11 +247,12 @@
           "jeux-de-pedalier",
           "jeux-de-direction",
           "pieces-de-cadre",
-          "cables-et-gaines"
+          "cables-et-gaines",
+          "pieces-de-velo-electrique"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,
-        "columns": 5,
+        "columns": 8,
         "mobile_columns": "2",
         "mobile_card_size": "44cqw",
         "columns_gap": 8,

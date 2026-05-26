@@ -288,6 +288,15 @@
             "role": "",
             "bio": "<p>C'est le dernier-né de l'équipe, le bambin. Il fait mal la vaisselle, mais est bon dans tout le reste.</p>"
           }
+        },
+        "member_zGLCiP": {
+          "type": "member",
+          "settings": {
+            "photo": "shopify://shop_images/equipe-charles-antoine-p.jpg",
+            "name": "Charles-Antoine Poulin",
+            "role": "",
+            "bio": "<p>Quand il ne sauve pas des vies, il sauve vos bottom brackets!</p>"
+          }
         }
       },
       "block_order": [
@@ -295,7 +304,8 @@
         "member_NThWjk",
         "member_AARFAq",
         "member_JPg6Rp",
-        "member_w89yAf"
+        "member_w89yAf",
+        "member_zGLCiP"
       ],
       "name": "Team Members",
       "settings": {
@@ -303,7 +313,7 @@
         "subheading": "",
         "heading_alignment": "center",
         "heading_color": "#111111",
-        "members_per_row": 5,
+        "members_per_row": 3,
         "image_ratio": "1 / 1",
         "round_photos": true,
         "card_text_alignment": "center",

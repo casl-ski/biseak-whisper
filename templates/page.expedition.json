@@ -1,0 +1,223 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_3cNynw": {
+      "type": "hero",
+      "blocks": {
+        "text_adUw4w": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<h1>Contact</h1>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_4Gq6KU": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Fabriqué avec soin et inconditionnellement apprécié par nos clients.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 32,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_HcVyme": {
+          "type": "button",
+          "name": "t:names.button",
+          "disabled": true,
+          "settings": {
+            "label": "Acheter maintenant",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
+        "spacer_8cWajA": {
+          "type": "spacer",
+          "name": "t:names.spacer",
+          "settings": {
+            "size": "pixel",
+            "percent_size": 100,
+            "pixel_size": 120,
+            "custom_mobile_size": false,
+            "size_mobile": "percent",
+            "percent_size_mobile": 100,
+            "pixel_size_mobile": 120
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_adUw4w",
+        "text_4Gq6KU",
+        "button_HcVyme",
+        "spacer_8cWajA"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/Header-Site-web-Recupere_e0750950-ca23-43b1-a0e6-afe3015e0db3.jpg",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "auto",
+        "section_height_custom": 27,
+        "color_scheme": "scheme-1",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "title": {
+          "type": "text",
+          "name": "t:names.title",
+          "disabled": true,
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "text",
+          "name": "t:names.content",
+          "settings": {
+            "text": "{{ closest.page.content }}",
+            "width": "100%",
+            "max_width": "narrow",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "content"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 0
+      }
+    },
+    "custom_liquid_cdWRgV": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"shipping-grid-wrapper\">\n  <h2 class=\"shipping-title\">Politique de livraison</h2>\n  \n  <div class=\"table-container\">\n    <table class=\"shipping-table\">\n      <thead>\n        <tr>\n          <th colspan=\"3\" class=\"table-header-main\">Livraison au Canada</th>\n        </tr>\n        <tr>\n          <th>&nbsp;</th>\n          <th>ON / QC / NB</th>\n          <th>Autres Provinces</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class=\"row-label\"><strong>Cadres et Colis Surdimensionnés</strong></td>\n          <td \n            colspan=\"2\"> 100$ <br>\n            <span class=\"free-shipping\"><strong>3-8 jours ouvrables</strong></span>\n  \t  </td>\n        </tr>\n        <tr>\n          <td class=\"row-label\"><strong>Bicyclettes</strong></td>\n          <td \n            colspan=\"2\"> 200$ <br>\n            <span class=\"free-shipping\">Gratuit pour les paniers de 2000$ ou plus</span>\n            <span class=\"free-shipping\"><strong>3-8 jours ouvrables</strong></span>\n  \t  </td>\n        </tr>\n        <tr>\n          <td class=\"row-label\"><strong>Pièces & accessoires</strong></td>\n          <td>\n            Prix fixe 20$<br>\n            <span class=\"free-shipping\">Gratuit pour les paniers de 150$ ou plus</span>\n            <span class=\"free-shipping\"><strong>3-5 jours ouvrables</strong></span>\n          </td>\n          <td>\n            Prix fixe 35$<br>\n            <span class=\"free-shipping\">Gratuit pour les paniers de 200$ ou plus</span>\n            <span class=\"free-shipping\"><strong>5-8 jours ouvrables</strong></span>\n          </td>\n        </tr>\n        <tr>\n          <td \n          \tclass=\"row-label\"><strong>Pièces & accessoires <mark>EXPRESS</mark></strong><br>\n    \t\t<span class=\"free-shipping\">2 à 4 jours ouvrables</span>\n  \t</td>\n          <td>\n            Prix fixe 50$<br>\n            <span class=\"free-shipping\">30$ pour les paniers de 150$ ou plus</span><br>\n            <span class=\"free-shipping\"><strong>1-2 jours ouvrables</strong></span>\n          </td>\n          <td>\n            Prix fixe 65$<br>\n            <span class=\"free-shipping\">45$ pour les paniers de 200$ ou plus</span><br>\n            <span class=\"free-shipping\"><strong>2-4 jours ouvrables</strong></span>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class=\"shipping-footer\">\n    <p>Notez que le ramassage en magasin sera toujours une option lors du paiement. Si vous constatez des irrégularités dans le calcul du coût de livraison, n'hésitez pas à nous contacter pour qu'on regarde ça ensemble.</p>\n  </div>\n</div>\n\n<style>\n  .shipping-grid-wrapper {\n    margin: 20px 0;\n    font-family: inherit;\n    color: #333;\n  }\n  .shipping-title {\n    text-align: center;\n    margin-bottom: 20px;\n  }\n  .table-container {\n    overflow-x: auto;\n  }\n  .shipping-table {\n    width: 100%;\n    border-collapse: collapse;\n    margin-bottom: 20px;\n    border: 1px solid #e8e8e8;\n  }\n  .shipping-table th, .shipping-table td {\n    border: 1px solid #e8e8e8;\n    padding: 15px;\n    text-align: center;\n  }\n  .table-header-main {\n    background-color: #f9f9f9;\n    font-weight: bold;\n    text-transform: uppercase;\n    letter-spacing: 1px;\n  }\n  .row-label {\n    background-color: #fcfcfc;\n    text-align: left;\n    width: 30%;\n  }\n  .free-shipping {\n    display: block;\n    font-size: 0.9em;\n    color: #2c712c;\n    margin-top: 5px;\n  }\n  .disclaimer-cell {\n    font-style: italic;\n    font-size: 0.9em;\n    background-color: #fff9f0;\n  }\n  .shipping-footer {\n    font-size: 0.95em;\n    line-height: 1.6;\n    border-left: 4px solid #ccc;\n    padding-left: 15px;\n    margin-top: 20px;\n  }\n  @media (max-width: 600px) {\n    .shipping-table th, .shipping-table td {\n      padding: 10px;\n      font-size: 0.85em;\n    }\n  }\n</style>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "hero_3cNynw",
+    "main",
+    "custom_liquid_cdWRgV"
+  ]
+}
