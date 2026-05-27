@@ -243,14 +243,16 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "guidons",
-          "potences",
-          "guidoline",
-          "poignees"
+          "velos-electriques",
+          "velos-de-montagne",
+          "gravel",
+          "fatbike",
+          "velos-de-route",
+          "velo-pour-enfant"
         ],
         "layout_type": "bento",
         "carousel_on_mobile": true,
-        "columns": 6,
+        "columns": 8,
         "mobile_columns": "2",
         "mobile_card_size": "44cqw",
         "columns_gap": 8,

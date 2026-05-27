@@ -14,3 +14,10 @@ To push:
 ```
 shopify theme push --store biseak-atelier-de-velo.myshopify.com/
 ```
+
+```
+
+Tarif de Livraison: Surdimensionné
+Tarif de Livraison: Vélo
+
+```

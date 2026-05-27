@@ -243,14 +243,23 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "guidons",
-          "potences",
-          "guidoline",
-          "poignees"
+          "protection",
+          "outils-pompes-et-entretien",
+          "sac-sacoches-et-portes-baggages",
+          "bouteilles-et-porte-bouteilles",
+          "nutrition",
+          "feux-et-lumieres",
+          "cadenas-et-antivols",
+          "cyclometres-et-gps",
+          "bequilles-et-roues-dappoint",
+          "garde-boue",
+          "clochettes-et-accessoires-pour-enfants",
+          "remorques-et-sieges-pour-enfants",
+          "transport-et-voyage"
         ],
         "layout_type": "bento",
         "carousel_on_mobile": true,
-        "columns": 6,
+        "columns": 8,
         "mobile_columns": "2",
         "mobile_card_size": "44cqw",
         "columns_gap": 8,

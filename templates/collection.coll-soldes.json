@@ -243,14 +243,13 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "guidons",
-          "potences",
-          "guidoline",
-          "poignees"
+          "velos-en-promotion",
+          "equipement-accessoires-et-pieces-en-promotion",
+          "vetements-en-promotion"
         ],
         "layout_type": "bento",
         "carousel_on_mobile": true,
-        "columns": 6,
+        "columns": 8,
         "mobile_columns": "2",
         "mobile_card_size": "44cqw",
         "columns_gap": 8,
