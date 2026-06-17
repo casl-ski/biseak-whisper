@@ -296,8 +296,8 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "Vélos en inventaire",
-                    "link": "shopify://collections",
+                    "label": "Boutique en Ligne",
+                    "link": "shopify://collections/produits",
                     "open_in_new_tab": false,
                     "style_class": "button",
                     "width": "fit-content",
