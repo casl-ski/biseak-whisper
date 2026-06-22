@@ -89,6 +89,7 @@
         "text_erhiqf"
       ],
       "name": "t:names.marquee_section",
+      "disabled": true,
       "settings": {
         "movement_direction": "normal",
         "color_scheme": "",
@@ -96,10 +97,22 @@
         "padding-block-end": 24,
         "gap_between_elements": 24
       }
+    },
+    "rental_grid": {
+      "type": "rental-grid",
+      "settings": {
+        "heading": "Nos vélos",
+        "collection": "location",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
     }
   },
   "order": [
     "main",
-    "marquee_UbrAW7"
+    "marquee_UbrAW7",
+    "rental_grid"
   ]
 }

@@ -1,0 +1,71 @@
+{%- doc -%}
+  Renders a bike model's rental booking widget. Collapsed by default (image,
+  title, price, "Sélectionner" button) — clicking it reveals the duration
+  package picker, pickup date/time, live availability check, and combined
+  hold + add-to-cart.
+
+  @param {object} product - A product tagged "rental-bike", one variant per duration package.
+{%- enddoc -%}
+
+<script src="{{ 'rental-booking-card.js' | asset_url }}" type="module"></script>
+{{ 'rental-booking-card.css' | asset_url | stylesheet_tag }}
+
+<rental-booking-card class="rental-booking-card">
+  <script type="application/json">
+    {
+      "product": "gid://shopify/Product/{{ product.id }}",
+      "variants": [
+        {%- for variant in product.variants -%}
+          {
+            "id": {{ variant.id | json }},
+            "gid": "gid://shopify/ProductVariant/{{ variant.id }}",
+            "title": {{ variant.title | json }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+
+  <div class="rental-booking-card__media">
+    {%- if product.featured_image -%}
+      {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: product.featured_image.alt }}
+    {%- endif -%}
+  </div>
+
+  <h3 class="rental-booking-card__title">{{ product.title }}</h3>
+  <p class="rental-booking-card__price">À partir de {{ product.price_min | money }}</p>
+
+  <button ref="selectButton" type="button" class="button rental-booking-card__select">
+    Sélectionner
+  </button>
+
+  <div class="rental-booking-card__fields">
+    <label class="rental-booking-card__field">
+      <span>Durée</span>
+      <select ref="variantSelect">
+        <option value="" selected disabled>Choisir une durée</option>
+        {%- for variant in product.variants -%}
+          <option value="gid://shopify/ProductVariant/{{ variant.id }}">
+            {{ variant.title }} — {{ variant.price | money }}
+          </option>
+        {%- endfor -%}
+      </select>
+    </label>
+
+    <label class="rental-booking-card__field">
+      <span>Date de prise en charge</span>
+      <input ref="dateInput" type="date" min="{{ 'now' | date: '%Y-%m-%d' }}" required>
+    </label>
+
+    <label class="rental-booking-card__field">
+      <span>Heure de prise en charge</span>
+      <input ref="timeInput" type="time" required>
+    </label>
+
+    <p ref="status" class="rental-booking-card__status" aria-live="polite"></p>
+
+    <button ref="submitButton" type="button" class="button" disabled>
+      Réserver
+    </button>
+  </div>
+</rental-booking-card>
