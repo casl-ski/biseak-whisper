@@ -4,6 +4,39 @@ import { CartAddEvent, CartErrorEvent } from '@theme/events';
 
 const AVAILABILITY_DEBOUNCE_MS = 400;
 
+/** @param {number} startHour @param {number} startMinute @param {number} endHour @param {number} endMinute
+ * @returns {string[]} "HH:MM" slots every 30 minutes, inclusive of the end time. */
+function thirtyMinuteSlots(startHour, startMinute, endHour, endMinute) {
+  const slots = [];
+  let h = startHour;
+  let m = startMinute;
+  while (h < endHour || (h === endHour && m <= endMinute)) {
+    slots.push(`${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`);
+    m += 30;
+    if (m >= 60) {
+      m -= 60;
+      h += 1;
+    }
+  }
+  return slots;
+}
+
+/** Shop hours: Tuesday-Friday 10:00-17:00, Saturday 9:00-15:30, closed Sunday/Monday.
+ * @param {string} dateStr - "YYYY-MM-DD"
+ * @returns {string[]} available "HH:MM" pickup slots for that date, or [] if closed. */
+function pickupSlotsForDate(dateStr) {
+  const day = new Date(`${dateStr}T00:00:00`).getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
+  if (day >= 2 && day <= 5) return thirtyMinuteSlots(10, 0, 17, 0);
+  if (day === 6) return thirtyMinuteSlots(9, 0, 15, 30);
+  return [];
+}
+
+/** @param {string} time - "HH:MM" */
+function formatTimeLabel(time) {
+  const [h, m] = time.split(':');
+  return m === '00' ? `${Number(h)}h` : `${Number(h)}h${m}`;
+}
+
 /**
  * Lets a shopper pick a bike model's duration package + pickup date/time,
  * checks live availability via the rental app's App Proxy endpoint, then
@@ -42,7 +75,7 @@ export class RentalBookingCard extends Component {
 
     this.refs.selectButton.addEventListener('click', this.#onSelect);
     this.refs.variantSelect.addEventListener('change', this.#onInputChange);
-    this.refs.dateInput.addEventListener('change', this.#onInputChange);
+    this.refs.dateInput.addEventListener('change', this.#onDateChange);
     this.refs.timeInput.addEventListener('change', this.#onInputChange);
     this.refs.submitButton.addEventListener('click', this.#onSubmit);
   }
@@ -51,13 +84,34 @@ export class RentalBookingCard extends Component {
     super.disconnectedCallback();
     this.refs.selectButton.removeEventListener('click', this.#onSelect);
     this.refs.variantSelect.removeEventListener('change', this.#onInputChange);
-    this.refs.dateInput.removeEventListener('change', this.#onInputChange);
+    this.refs.dateInput.removeEventListener('change', this.#onDateChange);
     this.refs.timeInput.removeEventListener('change', this.#onInputChange);
     this.refs.submitButton.removeEventListener('click', this.#onSubmit);
   }
 
   #onSelect = () => {
     this.classList.add('is-expanded');
+  };
+
+  /** Repopulates the time <select> with the slots open on the chosen date —
+   * shows a disabled "closed" option on days the shop isn't open at all. */
+  #onDateChange = () => {
+    const { timeInput } = this.refs;
+    const slots = this.refs.dateInput.value ? pickupSlotsForDate(this.refs.dateInput.value) : [];
+
+    timeInput.innerHTML = '';
+    if (slots.length === 0) {
+      timeInput.append(new Option('Fermé ce jour — choisissez une autre date', '', true, true));
+      timeInput.disabled = true;
+    } else {
+      timeInput.disabled = false;
+      timeInput.append(new Option('Choisir une heure', '', true, true));
+      for (const slot of slots) {
+        timeInput.append(new Option(formatTimeLabel(slot), slot));
+      }
+    }
+
+    this.#onInputChange();
   };
 
   /** Builds an ISO UTC string from the date+time inputs, interpreted in the

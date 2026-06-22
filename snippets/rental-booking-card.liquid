@@ -59,7 +59,9 @@
 
     <label class="rental-booking-card__field">
       <span>Heure de prise en charge</span>
-      <input ref="timeInput" type="time" required>
+      <select ref="timeInput" required disabled>
+        <option value="" selected disabled>Choisir une date d'abord</option>
+      </select>
     </label>
 
     <p ref="status" class="rental-booking-card__status" aria-live="polite"></p>
