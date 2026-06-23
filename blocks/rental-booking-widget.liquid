@@ -1,0 +1,95 @@
+{%- doc -%}
+  Bike rental booking widget for the product page: pickup date, number of
+  days, duration package (4h/8h — grayed out and replaced by a computed
+  "N × price" once more than 1 day is picked, since multi-day is always
+  priced at the 8h/day rate), pickup time, and the combined hold +
+  add-to-cart action.
+
+  Every bike has exactly two variants, created by the rental app's admin:
+  "Demi-Journée" (4h) and "Journée Entière" (8h) — multi-day rentals just add
+  multiple units of the 8h variant to cart, so Shopify's own quantity
+  pricing gives the right total with no custom price logic here.
+{%- enddoc -%}
+
+{%- liquid
+  assign product = closest.product
+  if request.visual_preview_mode and product == blank
+    assign product = collections.all.products.first
+  endif
+  assign half_day_variant = product.variants | where: 'title', 'Demi-Journée' | first
+  assign full_day_variant = product.variants | where: 'title', 'Journée Entière' | first
+-%}
+
+<script src="{{ 'rental-booking-widget.js' | asset_url }}" type="module"></script>
+{{ 'rental-booking-widget.css' | asset_url | stylesheet_tag }}
+
+{%- if half_day_variant and full_day_variant -%}
+  <rental-booking-widget class="rental-booking-widget" {{ block.shopify_attributes }}>
+    <script type="application/json">
+      {
+        "product": "gid://shopify/Product/{{ product.id }}",
+        "halfDay": {
+          "numericId": {{ half_day_variant.id | json }},
+          "price": {{ half_day_variant.price | money_without_currency | json }}
+        },
+        "fullDay": {
+          "numericId": {{ full_day_variant.id | json }},
+          "price": {{ full_day_variant.price | money_without_currency | json }}
+        }
+      }
+    </script>
+
+    <div class="rental-booking-widget__fields">
+      <label class="rental-booking-widget__field">
+        <span>Date de prise en charge</span>
+        <input ref="dateInput" type="date" min="{{ 'now' | date: '%Y-%m-%d' }}" required>
+      </label>
+
+      <label class="rental-booking-widget__field">
+        <span>Nombre de jours</span>
+        <input ref="daysInput" type="number" min="1" step="1" value="1" required>
+      </label>
+
+      <label class="rental-booking-widget__field" ref="packageField">
+        <span>Durée</span>
+        <select ref="packageSelect">
+          <option value="4">{{ half_day_variant.title }} — {{ half_day_variant.price | money }}</option>
+          <option value="8">{{ full_day_variant.title }} — {{ full_day_variant.price | money }}</option>
+        </select>
+      </label>
+
+      <p ref="priceSummary" class="rental-booking-widget__price-summary"></p>
+
+      <label class="rental-booking-widget__field">
+        <span>Heure de prise en charge</span>
+        <select ref="timeInput" required disabled>
+          <option value="" selected disabled>Choisir une date d'abord</option>
+        </select>
+      </label>
+
+      <p ref="status" class="rental-booking-widget__status" aria-live="polite"></p>
+
+      <button ref="submitButton" type="button" class="button" disabled>
+        Réserver
+      </button>
+    </div>
+  </rental-booking-widget>
+{%- else -%}
+  <p class="rental-booking-widget__error">
+    Ce vélo n'a pas encore de forfaits de location configurés — voir l'admin de l'app de location.
+  </p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Widget de location",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "Widget de location",
+      "category": "t:categories.product"
+    }
+  ]
+}
+{% endschema %}

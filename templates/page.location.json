@@ -97,22 +97,10 @@
         "padding-block-end": 24,
         "gap_between_elements": 24
       }
-    },
-    "rental_grid": {
-      "type": "rental-grid",
-      "settings": {
-        "heading": "Nos vélos",
-        "collection": "location",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 40,
-        "padding-block-end": 40
-      }
     }
   },
   "order": [
     "main",
-    "marquee_UbrAW7",
-    "rental_grid"
+    "marquee_UbrAW7"
   ]
 }

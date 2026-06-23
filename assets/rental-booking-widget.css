@@ -1,0 +1,44 @@
+.rental-booking-widget__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 320px;
+}
+
+.rental-booking-widget__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.rental-booking-widget__field span {
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.rental-booking-widget__field select,
+.rental-booking-widget__field input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+}
+
+.rental-booking-widget__field.is-grayed-out {
+  opacity: 0.5;
+}
+
+.rental-booking-widget__price-summary {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: -0.4rem 0 0;
+  min-height: 1.2em;
+}
+
+.rental-booking-widget__status {
+  font-size: 0.85rem;
+  margin: 0;
+  min-height: 1.2em;
+}
+
+.rental-booking-widget__error {
+  color: #b00020;
+}

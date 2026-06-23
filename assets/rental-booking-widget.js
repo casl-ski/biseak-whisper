@@ -45,13 +45,13 @@ function formatMoney(amount) {
 }
 
 /**
- * Lets a shopper pick a bike model's pickup date, number of days, duration
- * package (4h/8h — forced to 8h/day once more than one day is picked),
- * pickup time, checks live availability via the rental app's App Proxy
- * endpoint, then creates a hold and adds the bike to cart in one action.
+ * Product-page bike rental booking widget: pickup date, number of days,
+ * duration package (4h/8h — forced to 8h/day once more than one day is
+ * picked), pickup time. Checks live availability via the rental app's App
+ * Proxy endpoint, then creates a hold and adds the bike to cart in one
+ * action.
  *
- * @typedef {object} RentalBookingCardRefs
- * @property {HTMLButtonElement} selectButton
+ * @typedef {object} RentalBookingWidgetRefs
  * @property {HTMLInputElement} dateInput
  * @property {HTMLInputElement} daysInput
  * @property {HTMLElement} packageField
@@ -60,20 +60,10 @@ function formatMoney(amount) {
  * @property {HTMLSelectElement} timeInput
  * @property {HTMLElement} status
  * @property {HTMLButtonElement} submitButton
- * @extends Component<RentalBookingCardRefs>
+ * @extends Component<RentalBookingWidgetRefs>
  */
-export class RentalBookingCard extends Component {
-  requiredRefs = [
-    'selectButton',
-    'dateInput',
-    'daysInput',
-    'packageField',
-    'packageSelect',
-    'priceSummary',
-    'timeInput',
-    'status',
-    'submitButton',
-  ];
+export class RentalBookingWidget extends Component {
+  requiredRefs = ['dateInput', 'daysInput', 'packageField', 'packageSelect', 'priceSummary', 'timeInput', 'status', 'submitButton'];
 
   /** @type {string} */
   #productGid = '';
@@ -97,7 +87,6 @@ export class RentalBookingCard extends Component {
 
     this.#checkAvailability = debounce(this.#checkAvailability.bind(this), AVAILABILITY_DEBOUNCE_MS);
 
-    this.refs.selectButton.addEventListener('click', this.#onSelect);
     this.refs.dateInput.addEventListener('change', this.#onDateChange);
     this.refs.daysInput.addEventListener('input', this.#onDaysChange);
     this.refs.packageSelect.addEventListener('change', this.#onInputChange);
@@ -109,17 +98,12 @@ export class RentalBookingCard extends Component {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.refs.selectButton.removeEventListener('click', this.#onSelect);
     this.refs.dateInput.removeEventListener('change', this.#onDateChange);
     this.refs.daysInput.removeEventListener('input', this.#onDaysChange);
     this.refs.packageSelect.removeEventListener('change', this.#onInputChange);
     this.refs.timeInput.removeEventListener('change', this.#onInputChange);
     this.refs.submitButton.removeEventListener('click', this.#onSubmit);
   }
-
-  #onSelect = () => {
-    this.classList.add('is-expanded');
-  };
 
   /** @returns {number} */
   #days() {
@@ -201,7 +185,7 @@ export class RentalBookingCard extends Component {
 
     try {
       const params = new URLSearchParams({
-        model: this.#productGid,
+        product: this.#productGid,
         durationHours: String(this.#durationHours()),
         start,
         days: String(this.#days()),
@@ -219,7 +203,7 @@ export class RentalBookingCard extends Component {
       this.#setStatus(
         data.available
           ? `Disponible (${data.availableUnits}/${data.totalUnits})`
-          : 'Aucun vélo disponible pour cette période.',
+          : 'Ce vélo n’est pas disponible pour cette période.',
       );
     } catch (error) {
       console.error('Rental availability check failed:', error);
@@ -246,7 +230,7 @@ export class RentalBookingCard extends Component {
       // would just be ignored in favor of the authoritative one anyway).
       const holdResponse = await fetch('/apps/rental/hold', {
         ...fetchConfig('json'),
-        body: JSON.stringify({ model: this.#productGid, durationHours, start, days }),
+        body: JSON.stringify({ product: this.#productGid, durationHours, start, days }),
       });
       const hold = await holdResponse.json();
 
@@ -280,7 +264,7 @@ export class RentalBookingCard extends Component {
       }
 
       this.#setStatus('Ajouté au panier !');
-      this.dispatchEvent(new CartAddEvent(cart, this.id, { source: 'rental-booking-card' }));
+      this.dispatchEvent(new CartAddEvent(cart, this.id, { source: 'rental-booking-widget' }));
     } catch (error) {
       console.error('Rental hold/add-to-cart failed:', error);
       this.#setStatus('Une erreur est survenue.');
@@ -295,6 +279,6 @@ export class RentalBookingCard extends Component {
   }
 }
 
-if (!customElements.get('rental-booking-card')) {
-  customElements.define('rental-booking-card', RentalBookingCard);
+if (!customElements.get('rental-booking-widget')) {
+  customElements.define('rental-booking-widget', RentalBookingWidget);
 }
