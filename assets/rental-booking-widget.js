@@ -260,6 +260,12 @@ export class RentalBookingWidget extends Component {
       if (!cartResponse.ok || cart.status) {
         this.dispatchEvent(new CartErrorEvent(this.id, cart.message, cart.description, cart.errors));
         this.#setStatus(cart.message || 'Impossible d’ajouter au panier.');
+        // The hold succeeded but the cart add didn't — release it now rather
+        // than leaving the bike blocked for other customers until the cron
+        // sweep expires it up to 15 minutes later.
+        fetch(`/apps/rental/hold/${hold.holdId}/cancel`, fetchConfig('json')).catch((error) => {
+          console.error('Failed to release orphaned hold:', error);
+        });
         return;
       }
 
