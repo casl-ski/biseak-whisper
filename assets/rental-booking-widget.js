@@ -58,12 +58,29 @@ function formatMoney(amount) {
  * @property {HTMLSelectElement} packageSelect
  * @property {HTMLElement} priceSummary
  * @property {HTMLSelectElement} timeInput
+ * @property {HTMLElement} riderFields
+ * @property {HTMLInputElement} weightInput
+ * @property {HTMLInputElement} heightFeetInput
+ * @property {HTMLInputElement} heightInchesInput
  * @property {HTMLElement} status
  * @property {HTMLButtonElement} submitButton
  * @extends Component<RentalBookingWidgetRefs>
  */
 export class RentalBookingWidget extends Component {
-  requiredRefs = ['dateInput', 'daysInput', 'packageField', 'packageSelect', 'priceSummary', 'timeInput', 'status', 'submitButton'];
+  requiredRefs = [
+    'dateInput',
+    'daysInput',
+    'packageField',
+    'packageSelect',
+    'priceSummary',
+    'timeInput',
+    'riderFields',
+    'weightInput',
+    'heightFeetInput',
+    'heightInchesInput',
+    'status',
+    'submitButton',
+  ];
 
   /** @type {string} */
   #productGid = '';
@@ -90,7 +107,7 @@ export class RentalBookingWidget extends Component {
     this.refs.dateInput.addEventListener('change', this.#onDateChange);
     this.refs.daysInput.addEventListener('input', this.#onDaysChange);
     this.refs.packageSelect.addEventListener('change', this.#onInputChange);
-    this.refs.timeInput.addEventListener('change', this.#onInputChange);
+    this.refs.timeInput.addEventListener('change', this.#onTimeChange);
     this.refs.submitButton.addEventListener('click', this.#onSubmit);
 
     this.#onDaysChange();
@@ -101,7 +118,7 @@ export class RentalBookingWidget extends Component {
     this.refs.dateInput.removeEventListener('change', this.#onDateChange);
     this.refs.daysInput.removeEventListener('input', this.#onDaysChange);
     this.refs.packageSelect.removeEventListener('change', this.#onInputChange);
-    this.refs.timeInput.removeEventListener('change', this.#onInputChange);
+    this.refs.timeInput.removeEventListener('change', this.#onTimeChange);
     this.refs.submitButton.removeEventListener('click', this.#onSubmit);
   }
 
@@ -164,6 +181,16 @@ export class RentalBookingWidget extends Component {
       }
     }
 
+    // The time select just got reset to its placeholder — hide the rider
+    // fields until a real time is picked again.
+    this.refs.riderFields.hidden = true;
+    this.#onInputChange();
+  };
+
+  /** Reveals the weight/height fields once a real pickup time is picked —
+   * asking for them before that point would be premature. */
+  #onTimeChange = () => {
+    this.refs.riderFields.hidden = !this.refs.timeInput.value;
     this.#onInputChange();
   };
 
@@ -228,9 +255,14 @@ export class RentalBookingWidget extends Component {
       // itself when it forwards this request from the storefront domain to
       // the app, so the client never needs to (and a client-supplied `shop`
       // would just be ignored in favor of the authoritative one anyway).
+      const customerWeightLbs = Number(this.refs.weightInput.value) || undefined;
+      const heightFeet = Number(this.refs.heightFeetInput.value) || 0;
+      const heightInches = Number(this.refs.heightInchesInput.value) || 0;
+      const customerHeightInches = heightFeet || heightInches ? heightFeet * 12 + heightInches : undefined;
+
       const holdResponse = await fetch('/apps/rental/hold', {
         ...fetchConfig('json'),
-        body: JSON.stringify({ product: this.#productGid, durationHours, start, days }),
+        body: JSON.stringify({ product: this.#productGid, durationHours, start, days, customerWeightLbs, customerHeightInches }),
       });
       const hold = await holdResponse.json();
 

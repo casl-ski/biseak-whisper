@@ -26,6 +26,29 @@
   opacity: 0.5;
 }
 
+.rental-booking-widget__rider-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.rental-booking-widget__height-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rental-booking-widget__height-inputs input {
+  width: 4rem;
+  flex: none;
+  padding: 0.5rem 0.6rem;
+}
+
+.rental-booking-widget__height-inputs span {
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.65);
+}
+
 .rental-booking-widget__price-summary {
   font-size: 0.9rem;
   font-weight: 600;

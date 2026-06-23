@@ -61,11 +61,28 @@
       <p ref="priceSummary" class="rental-booking-widget__price-summary"></p>
 
       <label class="rental-booking-widget__field">
-        <span>Heure de prise en charge</span>
+        <span>Heure de ramassage</span>
         <select ref="timeInput" required disabled>
           <option value="" selected disabled>Choisir une date d'abord</option>
         </select>
       </label>
+
+      <div class="rental-booking-widget__rider-fields" ref="riderFields" hidden>
+        <label class="rental-booking-widget__field">
+          <span>Poids du conducteur (lb)</span>
+          <input ref="weightInput" type="number" min="1" step="1" placeholder="150">
+        </label>
+
+        <div class="rental-booking-widget__field">
+          <span>Taille du conducteur</span>
+          <div class="rental-booking-widget__height-inputs">
+            <input ref="heightFeetInput" type="number" min="0" max="8" step="1" placeholder="5" aria-label="Pieds">
+            <span>pi</span>
+            <input ref="heightInchesInput" type="number" min="0" max="11" step="1" placeholder="7" aria-label="Pouces">
+            <span>po</span>
+          </div>
+        </div>
+      </div>
 
       <p ref="status" class="rental-booking-widget__status" aria-live="polite"></p>
 

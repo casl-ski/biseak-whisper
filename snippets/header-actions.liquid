@@ -3,6 +3,8 @@
   src="{{ 'cart-icon.js' | asset_url }}"
   fetchpriority="low"
 ></script>
+<script type="module" src="{{ 'rental-hold-watcher.js' | asset_url }}" fetchpriority="low"></script>
+<rental-hold-watcher></rental-hold-watcher>
 
 {% capture cart_icon %}
   <cart-icon
