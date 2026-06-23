@@ -1,73 +1,86 @@
 {%- doc -%}
   Renders a bike model's rental booking widget. Collapsed by default (image,
-  title, price, "Sélectionner" button) — clicking it reveals the duration
-  package picker, pickup date/time, live availability check, and combined
-  hold + add-to-cart.
+  title, price, "Sélectionner" button) — clicking it reveals: pickup date,
+  number of days, duration package (4h/8h, grayed out and replaced by a
+  computed "N × price" once more than 1 day is picked), pickup time, and the
+  combined hold + add-to-cart action.
 
-  @param {object} product - A product tagged "rental-bike", one variant per duration package.
+  Every bike model has exactly two variants, created by the rental app's
+  admin: "Demi-Journée" (4h) and "Journée Entière" (8h) — multi-day rentals
+  just add multiple units of the 8h variant to cart, so Shopify's own
+  quantity pricing gives the right total with no custom price logic here.
+
+  @param {object} product - A product tagged "rental-bike".
 {%- enddoc -%}
+
+{%- assign half_day_variant = product.variants | where: 'title', 'Demi-Journée' | first -%}
+{%- assign full_day_variant = product.variants | where: 'title', 'Journée Entière' | first -%}
 
 <script src="{{ 'rental-booking-card.js' | asset_url }}" type="module"></script>
 {{ 'rental-booking-card.css' | asset_url | stylesheet_tag }}
 
-<rental-booking-card class="rental-booking-card">
-  <script type="application/json">
-    {
-      "product": "gid://shopify/Product/{{ product.id }}",
-      "variants": [
-        {%- for variant in product.variants -%}
-          {
-            "id": {{ variant.id | json }},
-            "gid": "gid://shopify/ProductVariant/{{ variant.id }}",
-            "title": {{ variant.title | json }}
-          }{%- unless forloop.last -%},{%- endunless -%}
-        {%- endfor -%}
-      ]
-    }
-  </script>
+{%- if half_day_variant and full_day_variant -%}
+  <rental-booking-card class="rental-booking-card">
+    <script type="application/json">
+      {
+        "product": "gid://shopify/Product/{{ product.id }}",
+        "halfDay": {
+          "numericId": {{ half_day_variant.id | json }},
+          "price": {{ half_day_variant.price | money_without_currency | json }}
+        },
+        "fullDay": {
+          "numericId": {{ full_day_variant.id | json }},
+          "price": {{ full_day_variant.price | money_without_currency | json }}
+        }
+      }
+    </script>
 
-  <div class="rental-booking-card__media">
-    {%- if product.featured_image -%}
-      {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: product.featured_image.alt }}
-    {%- endif -%}
-  </div>
+    <div class="rental-booking-card__media">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: product.featured_image.alt }}
+      {%- endif -%}
+    </div>
 
-  <h3 class="rental-booking-card__title">{{ product.title }}</h3>
-  <p class="rental-booking-card__price">À partir de {{ product.price_min | money }}</p>
+    <h3 class="rental-booking-card__title">{{ product.title }}</h3>
+    <p class="rental-booking-card__price">À partir de {{ product.price_min | money }}</p>
 
-  <button ref="selectButton" type="button" class="button rental-booking-card__select">
-    Sélectionner
-  </button>
-
-  <div class="rental-booking-card__fields">
-    <label class="rental-booking-card__field">
-      <span>Durée</span>
-      <select ref="variantSelect">
-        <option value="" selected disabled>Choisir une durée</option>
-        {%- for variant in product.variants -%}
-          <option value="gid://shopify/ProductVariant/{{ variant.id }}">
-            {{ variant.title }} — {{ variant.price | money }}
-          </option>
-        {%- endfor -%}
-      </select>
-    </label>
-
-    <label class="rental-booking-card__field">
-      <span>Date de prise en charge</span>
-      <input ref="dateInput" type="date" min="{{ 'now' | date: '%Y-%m-%d' }}" required>
-    </label>
-
-    <label class="rental-booking-card__field">
-      <span>Heure de prise en charge</span>
-      <select ref="timeInput" required disabled>
-        <option value="" selected disabled>Choisir une date d'abord</option>
-      </select>
-    </label>
-
-    <p ref="status" class="rental-booking-card__status" aria-live="polite"></p>
-
-    <button ref="submitButton" type="button" class="button" disabled>
-      Réserver
+    <button ref="selectButton" type="button" class="button rental-booking-card__select">
+      Sélectionner
     </button>
-  </div>
-</rental-booking-card>
+
+    <div class="rental-booking-card__fields">
+      <label class="rental-booking-card__field">
+        <span>Date de prise en charge</span>
+        <input ref="dateInput" type="date" min="{{ 'now' | date: '%Y-%m-%d' }}" required>
+      </label>
+
+      <label class="rental-booking-card__field">
+        <span>Nombre de jours</span>
+        <input ref="daysInput" type="number" min="1" step="1" value="1" required>
+      </label>
+
+      <label class="rental-booking-card__field" ref="packageField">
+        <span>Durée</span>
+        <select ref="packageSelect">
+          <option value="4">{{ half_day_variant.title }} — {{ half_day_variant.price | money }}</option>
+          <option value="8">{{ full_day_variant.title }} — {{ full_day_variant.price | money }}</option>
+        </select>
+      </label>
+
+      <p ref="priceSummary" class="rental-booking-card__price-summary"></p>
+
+      <label class="rental-booking-card__field">
+        <span>Heure de prise en charge</span>
+        <select ref="timeInput" required disabled>
+          <option value="" selected disabled>Choisir une date d'abord</option>
+        </select>
+      </label>
+
+      <p ref="status" class="rental-booking-card__status" aria-live="polite"></p>
+
+      <button ref="submitButton" type="button" class="button" disabled>
+        Réserver
+      </button>
+    </div>
+  </rental-booking-card>
+{%- endif -%}

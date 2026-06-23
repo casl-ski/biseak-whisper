@@ -22,6 +22,8 @@ function thirtyMinuteSlots(startHour, startMinute, endHour, endMinute) {
 }
 
 /** Shop hours: Tuesday-Friday 10:00-17:00, Saturday 9:00-15:30, closed Sunday/Monday.
+ * Mirrored in the backend (biseak-rental-app's src/lib/business-hours.ts) —
+ * keep both in sync if hours change.
  * @param {string} dateStr - "YYYY-MM-DD"
  * @returns {string[]} available "HH:MM" pickup slots for that date, or [] if closed. */
 function pickupSlotsForDate(dateStr) {
@@ -37,28 +39,49 @@ function formatTimeLabel(time) {
   return m === '00' ? `${Number(h)}h` : `${Number(h)}h${m}`;
 }
 
+/** @param {number} amount */
+function formatMoney(amount) {
+  return amount.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
+}
+
 /**
- * Lets a shopper pick a bike model's duration package + pickup date/time,
- * checks live availability via the rental app's App Proxy endpoint, then
- * creates a hold and adds the bike to cart in one action.
+ * Lets a shopper pick a bike model's pickup date, number of days, duration
+ * package (4h/8h — forced to 8h/day once more than one day is picked),
+ * pickup time, checks live availability via the rental app's App Proxy
+ * endpoint, then creates a hold and adds the bike to cart in one action.
  *
  * @typedef {object} RentalBookingCardRefs
  * @property {HTMLButtonElement} selectButton
- * @property {HTMLSelectElement} variantSelect
  * @property {HTMLInputElement} dateInput
- * @property {HTMLInputElement} timeInput
+ * @property {HTMLInputElement} daysInput
+ * @property {HTMLElement} packageField
+ * @property {HTMLSelectElement} packageSelect
+ * @property {HTMLElement} priceSummary
+ * @property {HTMLSelectElement} timeInput
  * @property {HTMLElement} status
  * @property {HTMLButtonElement} submitButton
  * @extends Component<RentalBookingCardRefs>
  */
 export class RentalBookingCard extends Component {
-  requiredRefs = ['selectButton', 'variantSelect', 'dateInput', 'timeInput', 'status', 'submitButton'];
+  requiredRefs = [
+    'selectButton',
+    'dateInput',
+    'daysInput',
+    'packageField',
+    'packageSelect',
+    'priceSummary',
+    'timeInput',
+    'status',
+    'submitButton',
+  ];
 
-  /** @type {{ id: string; gid: string; title: string }[]} */
-  #variants = [];
   /** @type {string} */
   #productGid = '';
-  /** @type {{ availableUnits: number } | null} */
+  /** @type {{ numericId: number; price: string } | null} */
+  #halfDay = null;
+  /** @type {{ numericId: number; price: string } | null} */
+  #fullDay = null;
+  /** @type {{ available: boolean; availableUnits: number; totalUnits: number } | null} */
   #lastAvailability = null;
 
   connectedCallback() {
@@ -68,23 +91,28 @@ export class RentalBookingCard extends Component {
     if (dataScript?.textContent) {
       const data = JSON.parse(dataScript.textContent);
       this.#productGid = data.product;
-      this.#variants = data.variants;
+      this.#halfDay = data.halfDay;
+      this.#fullDay = data.fullDay;
     }
 
     this.#checkAvailability = debounce(this.#checkAvailability.bind(this), AVAILABILITY_DEBOUNCE_MS);
 
     this.refs.selectButton.addEventListener('click', this.#onSelect);
-    this.refs.variantSelect.addEventListener('change', this.#onInputChange);
     this.refs.dateInput.addEventListener('change', this.#onDateChange);
+    this.refs.daysInput.addEventListener('input', this.#onDaysChange);
+    this.refs.packageSelect.addEventListener('change', this.#onInputChange);
     this.refs.timeInput.addEventListener('change', this.#onInputChange);
     this.refs.submitButton.addEventListener('click', this.#onSubmit);
+
+    this.#onDaysChange();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.refs.selectButton.removeEventListener('click', this.#onSelect);
-    this.refs.variantSelect.removeEventListener('change', this.#onInputChange);
     this.refs.dateInput.removeEventListener('change', this.#onDateChange);
+    this.refs.daysInput.removeEventListener('input', this.#onDaysChange);
+    this.refs.packageSelect.removeEventListener('change', this.#onInputChange);
     this.refs.timeInput.removeEventListener('change', this.#onInputChange);
     this.refs.submitButton.removeEventListener('click', this.#onSubmit);
   }
@@ -92,6 +120,47 @@ export class RentalBookingCard extends Component {
   #onSelect = () => {
     this.classList.add('is-expanded');
   };
+
+  /** @returns {number} */
+  #days() {
+    const value = Number(this.refs.daysInput.value);
+    return Number.isInteger(value) && value > 0 ? value : 1;
+  }
+
+  /** @returns {4 | 8} */
+  #durationHours() {
+    return this.#days() > 1 ? 8 : /** @type {4 | 8} */ (Number(this.refs.packageSelect.value));
+  }
+
+  /** A multi-day rental is always priced at the 8h/day rate — there's no
+   * separate multi-day price, just N units of the full-day variant. */
+  #onDaysChange = () => {
+    const days = this.#days();
+    const isMultiDay = days > 1;
+
+    this.refs.packageSelect.disabled = isMultiDay;
+    this.refs.packageField.classList.toggle('is-grayed-out', isMultiDay);
+
+    if (isMultiDay && this.#fullDay) {
+      const total = days * Number(this.#fullDay.price);
+      this.refs.priceSummary.textContent = `${days} × ${formatMoney(Number(this.#fullDay.price))} = ${formatMoney(total)}`;
+    } else {
+      this.refs.priceSummary.textContent = '';
+    }
+
+    this.#onInputChange();
+  };
+
+  /** Builds an ISO UTC string from the date+time inputs, interpreted in the
+   * shopper's local timezone — correct for the overwhelming majority of
+   * bookings, which are made by someone local to the shop. */
+  #pickupStartIso() {
+    const { dateInput, timeInput } = this.refs;
+    if (!dateInput.value || !timeInput.value) return null;
+    const local = new Date(`${dateInput.value}T${timeInput.value}:00`);
+    if (Number.isNaN(local.getTime())) return null;
+    return local.toISOString();
+  }
 
   /** Repopulates the time <select> with the slots open on the chosen date —
    * shows a disabled "closed" option on days the shop isn't open at all. */
@@ -114,17 +183,6 @@ export class RentalBookingCard extends Component {
     this.#onInputChange();
   };
 
-  /** Builds an ISO UTC string from the date+time inputs, interpreted in the
-   * shopper's local timezone — correct for the overwhelming majority of
-   * bookings, which are made by someone local to the shop. */
-  #pickupStartIso() {
-    const { dateInput, timeInput } = this.refs;
-    if (!dateInput.value || !timeInput.value) return null;
-    const local = new Date(`${dateInput.value}T${timeInput.value}:00`);
-    if (Number.isNaN(local.getTime())) return null;
-    return local.toISOString();
-  }
-
   #onInputChange = () => {
     this.#lastAvailability = null;
     this.#checkAvailability();
@@ -132,18 +190,22 @@ export class RentalBookingCard extends Component {
 
   #checkAvailability = async () => {
     const start = this.#pickupStartIso();
-    const variantGid = this.refs.variantSelect.value;
-    if (!start || !variantGid) {
+    if (!start) {
       this.#setStatus('');
       this.refs.submitButton.disabled = true;
       return;
     }
 
-    this.#setStatus(window.Theme?.translations?.rentalCheckingAvailability ?? 'Vérification de la disponibilité…');
+    this.#setStatus('Vérification de la disponibilité…');
     this.refs.submitButton.disabled = true;
 
     try {
-      const params = new URLSearchParams({ model: this.#productGid, variant: variantGid, start });
+      const params = new URLSearchParams({
+        model: this.#productGid,
+        durationHours: String(this.#durationHours()),
+        start,
+        days: String(this.#days()),
+      });
       const response = await fetch(`/apps/rental/availability?${params}`, { headers: { Accept: 'application/json' } });
       const data = await response.json();
 
@@ -157,7 +219,7 @@ export class RentalBookingCard extends Component {
       this.#setStatus(
         data.available
           ? `Disponible (${data.availableUnits}/${data.totalUnits})`
-          : 'Aucun vélo disponible pour cette date.',
+          : 'Aucun vélo disponible pour cette période.',
       );
     } catch (error) {
       console.error('Rental availability check failed:', error);
@@ -169,8 +231,9 @@ export class RentalBookingCard extends Component {
   #onSubmit = async (event) => {
     event.preventDefault();
     const start = this.#pickupStartIso();
-    const variantGid = this.refs.variantSelect.value;
-    const variant = this.#variants.find((v) => v.gid === variantGid);
+    const durationHours = this.#durationHours();
+    const days = this.#days();
+    const variant = durationHours === 4 ? this.#halfDay : this.#fullDay;
     if (!start || !variant || !this.#lastAvailability?.available) return;
 
     this.refs.submitButton.disabled = true;
@@ -183,7 +246,7 @@ export class RentalBookingCard extends Component {
       // would just be ignored in favor of the authoritative one anyway).
       const holdResponse = await fetch('/apps/rental/hold', {
         ...fetchConfig('json'),
-        body: JSON.stringify({ model: this.#productGid, variant: variantGid, start }),
+        body: JSON.stringify({ model: this.#productGid, durationHours, start, days }),
       });
       const hold = await holdResponse.json();
 
@@ -193,13 +256,13 @@ export class RentalBookingCard extends Component {
         return;
       }
 
-      const cartResponse = await fetch(window.Theme.routes.cart_add_url, {
+      const cartResponse = await fetch(Theme.routes.cart_add_url, {
         ...fetchConfig('json'),
         body: JSON.stringify({
           items: [
             {
-              id: Number(variant.id),
-              quantity: 1,
+              id: variant.numericId,
+              quantity: durationHours === 8 ? days : 1,
               properties: {
                 _booking_hold_id: hold.holdId,
                 'Date de prise en charge': new Date(start).toLocaleString('fr-CA'),
