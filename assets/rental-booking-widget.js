@@ -3,35 +3,7 @@ import { fetchConfig, debounce } from '@theme/utilities';
 import { CartAddEvent, CartErrorEvent } from '@theme/events';
 
 const AVAILABILITY_DEBOUNCE_MS = 400;
-
-/** @param {number} startHour @param {number} startMinute @param {number} endHour @param {number} endMinute
- * @returns {string[]} "HH:MM" slots every 30 minutes, inclusive of the end time. */
-function thirtyMinuteSlots(startHour, startMinute, endHour, endMinute) {
-  const slots = [];
-  let h = startHour;
-  let m = startMinute;
-  while (h < endHour || (h === endHour && m <= endMinute)) {
-    slots.push(`${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`);
-    m += 30;
-    if (m >= 60) {
-      m -= 60;
-      h += 1;
-    }
-  }
-  return slots;
-}
-
-/** Shop hours: Tuesday-Friday 10:00-17:00, Saturday 9:00-15:30, closed Sunday/Monday.
- * Mirrored in the backend (biseak-rental-app's src/lib/business-hours.ts) —
- * keep both in sync if hours change.
- * @param {string} dateStr - "YYYY-MM-DD"
- * @returns {string[]} available "HH:MM" pickup slots for that date, or [] if closed. */
-function pickupSlotsForDate(dateStr) {
-  const day = new Date(`${dateStr}T00:00:00`).getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
-  if (day >= 2 && day <= 5) return thirtyMinuteSlots(10, 0, 17, 0);
-  if (day === 6) return thirtyMinuteSlots(9, 0, 15, 30);
-  return [];
-}
+const CALENDAR_RANGE_DAYS = 90;
 
 /** @param {string} time - "HH:MM" */
 function formatTimeLabel(time) {
@@ -44,15 +16,24 @@ function formatMoney(amount) {
   return amount.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '$';
 }
 
+/** @param {Date} date @returns {string} "YYYY-MM-DD" (calendar arithmetic only, no timezone conversion) */
+function dateKey(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
 /**
- * Product-page bike rental booking widget: pickup date, number of days,
- * duration package (4h/8h — forced to 8h/day once more than one day is
- * picked), pickup time. Checks live availability via the rental app's App
- * Proxy endpoint, then creates a hold and adds the bike to cart in one
- * action.
+ * Product-page bike rental booking widget: number of days, duration package
+ * (4h/8h — forced to 8h/day once more than one day is picked), a calendar
+ * grid for the pickup date (gray/half-gray/normal days from the rental
+ * app's calendar endpoint), and pickup time (options disabled per the same
+ * data). Checks live availability via the rental app's App Proxy endpoint,
+ * then creates a hold and adds the bike to cart in one action.
  *
  * @typedef {object} RentalBookingWidgetRefs
- * @property {HTMLInputElement} dateInput
+ * @property {import('./rental-calendar.js').RentalCalendar} calendar
  * @property {HTMLInputElement} daysInput
  * @property {HTMLElement} packageField
  * @property {HTMLSelectElement} packageSelect
@@ -68,7 +49,7 @@ function formatMoney(amount) {
  */
 export class RentalBookingWidget extends Component {
   requiredRefs = [
-    'dateInput',
+    'calendar',
     'daysInput',
     'packageField',
     'packageSelect',
@@ -104,20 +85,21 @@ export class RentalBookingWidget extends Component {
 
     this.#checkAvailability = debounce(this.#checkAvailability.bind(this), AVAILABILITY_DEBOUNCE_MS);
 
-    this.refs.dateInput.addEventListener('change', this.#onDateChange);
-    this.refs.daysInput.addEventListener('input', this.#onDaysChange);
-    this.refs.packageSelect.addEventListener('change', this.#onInputChange);
+    this.refs.calendar.addEventListener('rentalcalendar:select', this.#onCalendarSelect);
+    this.refs.daysInput.addEventListener('input', this.#onDurationChange);
+    this.refs.packageSelect.addEventListener('change', this.#onDurationChange);
     this.refs.timeInput.addEventListener('change', this.#onTimeChange);
     this.refs.submitButton.addEventListener('click', this.#onSubmit);
 
     this.#onDaysChange();
+    this.#fetchCalendar();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.refs.dateInput.removeEventListener('change', this.#onDateChange);
-    this.refs.daysInput.removeEventListener('input', this.#onDaysChange);
-    this.refs.packageSelect.removeEventListener('change', this.#onInputChange);
+    this.refs.calendar.removeEventListener('rentalcalendar:select', this.#onCalendarSelect);
+    this.refs.daysInput.removeEventListener('input', this.#onDurationChange);
+    this.refs.packageSelect.removeEventListener('change', this.#onDurationChange);
     this.refs.timeInput.removeEventListener('change', this.#onTimeChange);
     this.refs.submitButton.removeEventListener('click', this.#onSubmit);
   }
@@ -152,32 +134,76 @@ export class RentalBookingWidget extends Component {
     this.#onInputChange();
   };
 
-  /** Builds an ISO UTC string from the date+time inputs, interpreted in the
-   * shopper's local timezone — correct for the overwhelming majority of
-   * bookings, which are made by someone local to the shop. */
+  /** Days-count or package changes can flip the effective duration (4h vs
+   * 8h), which changes which slots/days the calendar should gray out. */
+  #onDurationChange = () => {
+    this.#onDaysChange();
+    this.#fetchCalendar();
+  };
+
+  /** Builds an ISO UTC string from the selected calendar date + time,
+   * interpreted in the shopper's local timezone — correct for the
+   * overwhelming majority of bookings, which are made by someone local to
+   * the shop. */
   #pickupStartIso() {
-    const { dateInput, timeInput } = this.refs;
-    if (!dateInput.value || !timeInput.value) return null;
-    const local = new Date(`${dateInput.value}T${timeInput.value}:00`);
+    const selectedDate = this.refs.calendar.selectedDate;
+    const { timeInput } = this.refs;
+    if (!selectedDate || !timeInput.value) return null;
+    const local = new Date(`${selectedDate}T${timeInput.value}:00`);
     if (Number.isNaN(local.getTime())) return null;
     return local.toISOString();
   }
 
-  /** Repopulates the time <select> with the slots open on the chosen date —
-   * shows a disabled "closed" option on days the shop isn't open at all. */
-  #onDateChange = () => {
+  /** Fetches per-day/per-slot availability for the visible calendar window
+   * and hands it to the <rental-calendar> element to render. Re-run whenever
+   * the effective duration changes, since that's the only thing that
+   * affects which slots/days are blocked. */
+  #fetchCalendar = async () => {
+    if (!this.#productGid) return;
+    const from = dateKey(new Date());
+    const to = dateKey(new Date(new Date().setDate(new Date().getDate() + CALENDAR_RANGE_DAYS - 1)));
+
+    try {
+      const params = new URLSearchParams({
+        product: this.#productGid,
+        durationHours: String(this.#durationHours()),
+        from,
+        to,
+      });
+      const response = await fetch(`/apps/rental/calendar?${params}`, { headers: { Accept: 'application/json' } });
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error('Rental calendar fetch failed:', data);
+        return;
+      }
+
+      this.refs.calendar.setData(data.days, from, to);
+      this.#onCalendarSelect();
+    } catch (error) {
+      console.error('Rental calendar fetch failed:', error);
+    }
+  };
+
+  /** Repopulates the time <select> from the calendar's per-slot data for the
+   * selected day — options for already-booked slots are disabled rather
+   * than omitted, so the shopper can see what's blocked. */
+  #onCalendarSelect = () => {
+    const selectedDate = this.refs.calendar.selectedDate;
+    const slots = Object.entries(this.refs.calendar.selectedDaySlots);
     const { timeInput } = this.refs;
-    const slots = this.refs.dateInput.value ? pickupSlotsForDate(this.refs.dateInput.value) : [];
 
     timeInput.innerHTML = '';
-    if (slots.length === 0) {
-      timeInput.append(new Option('Fermé ce jour — choisissez une autre date', '', true, true));
+    if (!selectedDate || slots.length === 0) {
+      timeInput.append(new Option('Choisir une date d’abord', '', true, true));
       timeInput.disabled = true;
     } else {
       timeInput.disabled = false;
       timeInput.append(new Option('Choisir une heure', '', true, true));
-      for (const slot of slots) {
-        timeInput.append(new Option(formatTimeLabel(slot), slot));
+      for (const [slot, isFree] of slots) {
+        const option = new Option(formatTimeLabel(slot), slot);
+        option.disabled = !isFree;
+        timeInput.append(option);
       }
     }
 

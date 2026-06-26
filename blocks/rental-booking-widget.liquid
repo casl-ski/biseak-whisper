@@ -20,7 +20,9 @@
   assign full_day_variant = product.variants | where: 'title', 'Journée Entière' | first
 -%}
 
+<script src="{{ 'rental-calendar.js' | asset_url }}" type="module"></script>
 <script src="{{ 'rental-booking-widget.js' | asset_url }}" type="module"></script>
+{{ 'rental-calendar.css' | asset_url | stylesheet_tag }}
 {{ 'rental-booking-widget.css' | asset_url | stylesheet_tag }}
 
 {%- if half_day_variant and full_day_variant -%}
@@ -41,11 +43,6 @@
 
     <div class="rental-booking-widget__fields">
       <label class="rental-booking-widget__field">
-        <span>Date de prise en charge</span>
-        <input ref="dateInput" type="date" min="{{ 'now' | date: '%Y-%m-%d' }}" required>
-      </label>
-
-      <label class="rental-booking-widget__field">
         <span>Nombre de jours</span>
         <input ref="daysInput" type="number" min="1" step="1" value="1" required>
       </label>
@@ -59,6 +56,11 @@
       </label>
 
       <p ref="priceSummary" class="rental-booking-widget__price-summary"></p>
+
+      <div class="rental-booking-widget__field">
+        <span>Date de ramassage</span>
+        <rental-calendar ref="calendar"></rental-calendar>
+      </div>
 
       <label class="rental-booking-widget__field">
         <span>Heure de ramassage</span>
