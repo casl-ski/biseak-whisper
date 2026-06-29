@@ -71,6 +71,16 @@
 
       <div class="rental-booking-widget__rider-fields" ref="riderFields" hidden>
         <label class="rental-booking-widget__field">
+          <span>Nom du client</span>
+          <input ref="nameInput" type="text" autocomplete="name">
+        </label>
+
+        <label class="rental-booking-widget__field">
+          <span>Téléphone</span>
+          <input ref="phoneInput" type="tel" autocomplete="tel">
+        </label>
+
+        <label class="rental-booking-widget__field">
           <span>Poids du conducteur (lb)</span>
           <input ref="weightInput" type="number" min="1" step="1" value="150">
         </label>

@@ -40,6 +40,8 @@ function dateKey(date) {
  * @property {HTMLElement} priceSummary
  * @property {HTMLSelectElement} timeInput
  * @property {HTMLElement} riderFields
+ * @property {HTMLInputElement} nameInput
+ * @property {HTMLInputElement} phoneInput
  * @property {HTMLInputElement} weightInput
  * @property {HTMLInputElement} heightFeetInput
  * @property {HTMLInputElement} heightInchesInput
@@ -56,6 +58,8 @@ export class RentalBookingWidget extends Component {
     'priceSummary',
     'timeInput',
     'riderFields',
+    'nameInput',
+    'phoneInput',
     'weightInput',
     'heightFeetInput',
     'heightInchesInput',
@@ -281,6 +285,8 @@ export class RentalBookingWidget extends Component {
       // itself when it forwards this request from the storefront domain to
       // the app, so the client never needs to (and a client-supplied `shop`
       // would just be ignored in favor of the authoritative one anyway).
+      const customerName = this.refs.nameInput.value.trim() || undefined;
+      const customerPhone = this.refs.phoneInput.value.trim() || undefined;
       const customerWeightLbs = Number(this.refs.weightInput.value) || undefined;
       const heightFeet = Number(this.refs.heightFeetInput.value) || 0;
       const heightInches = Number(this.refs.heightInchesInput.value) || 0;
@@ -288,7 +294,16 @@ export class RentalBookingWidget extends Component {
 
       const holdResponse = await fetch('/apps/rental/hold', {
         ...fetchConfig('json'),
-        body: JSON.stringify({ product: this.#productGid, durationHours, start, days, customerWeightLbs, customerHeightInches }),
+        body: JSON.stringify({
+          product: this.#productGid,
+          durationHours,
+          start,
+          days,
+          customerName,
+          customerPhone,
+          customerWeightLbs,
+          customerHeightInches,
+        }),
       });
       const hold = await holdResponse.json();
 
